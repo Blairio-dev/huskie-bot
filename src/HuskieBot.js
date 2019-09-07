@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import './HuskieBot.css';
-import logo from '../src/assets/logo.svg';
+import huskieBot from '../src/assets/HuskieBot.svg';
 import { huskisms } from '../src/assets/huskisms';
 
-const StyledAnchor = styled('a')`
-  color: hsl(193, 95%, 68%);
-  margin-bottom: 16px;
+const StyledButton = styled('button')`
+  appearance: none;
+  background: hsl(240, 22%, 18%);
+  border: 1px solid hsl(240, 22%, 58%);
+  color: hsl(0, 0%, 100%);
+  font-size: 14px;
+  font-weight: bold;
+  margin: 16px;
+  min-width: 80px;
+  padding: 16px;
+`;
+
+const StyledButtonGroup = styled('div')`
+  align-items: center;
+  display: flex;
+  text-align: center;
 `;
 
 const StyledHeader = styled('header')`
@@ -21,36 +34,46 @@ const StyledHeader = styled('header')`
 `;
 
 const StyledLogo = styled('img')`
-  animation: App-logo-spin infinite 20s linear;
+  animation: Head-shake infinite 0.5s alternate linear;
   height: 40vmin;
   margin-bottom: 8px;
   pointer-events: none;
 
-  @keyframes App-logo-spin {
+  @keyframes Head-shake {
     from {
-      transform: rotate(0deg);
+      transform: rotate(-5deg);
     }
     to {
-      transform: rotate(360deg);
+      transform: rotate(5deg);
     }
 `;
 
-class HuskieBot extends Component {	
+function newChat(type) {
+  let chat;
+
+  chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
+
+  return chat;
+};
+
+class HuskieBot extends Component {
   render() {
     return (
       <div>
         <StyledHeader>
-          <h1>HuskieBot v2</h1>
-          <StyledLogo src={logo} alt="logo" />
+          <h1>HuskieBot</h1>
+          <StyledLogo src={huskieBot} alt="logo" />
           <p>
-            {huskisms.exclamations[Math.floor(Math.random() * huskisms.exclamations.length)]}
+            {newChat('colloquialisms')}
           </p>
-          <StyledAnchor
-            href="."
-            rel="noopener noreferrer"
-          >
-            I'd have that again! (Reload)
-          </StyledAnchor>
+          <StyledButtonGroup>
+            <StyledButton>
+              Shite
+            </StyledButton>
+            <StyledButton>
+              Wisdom
+            </StyledButton>
+          </StyledButtonGroup>
         </StyledHeader>
     </div>
     )

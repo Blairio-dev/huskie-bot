@@ -2,20 +2,17 @@ const huskisms = {
 	activities: [
 		'I’m off to get some new threads.',
 		'Carpet baggers.',
-		'Get yoursel’ up the road.',
-		'Let’s louse.',
 	],
 	boozing: [
 		'Let’s get few pots organised!',
 		'Let’s get potted up!',
 		'Let’s get sparkled!',
-
 	],
 	colloquialisms: [
 		'Ambivalent.',
 		'Panzered.',
+		'Panzershreked.',
 		'Potless.',
-		
 	],
 	coversational: [
 		'and I don’t mind telling you.',
@@ -64,13 +61,24 @@ const huskisms = {
 		'Wee jacko.',
 	],
 	food: [
+		'Marks and Sparks.',
+		'Let’s get pretzeled up.',
+		'The golden arches.',
+	],
+	foodPost: [
 		'I’d have that again.',
 		'I’m away for a pan drop.',
 		'I shouldnae have ate all that.',
-		'Right, let’s get pretzeled.',
 		'Snaffled.',
 		'Succulent.',
-		'The golden arches.',
+	],
+	goodbyes: [
+		'Get yoursel’ up the road.',
+		'Let’s louse.',
+	],
+	greetings: [
+		"Nice of you to join us!",
+		"What time do you call this?",
 	],
 	names: [
 		'Blairio',
