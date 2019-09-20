@@ -57,20 +57,31 @@ function newChat(type) {
 };
 
 class HuskieBot extends Component {
+  constructor(props) {
+		super(props);
+
+		const { chat = newChat('colloquialisms') } = props;
+
+		this.state = {
+			chat,
+		};
+  }
+  
   render() {
+    const { chat } = this.state;
     return (
       <div>
         <StyledHeader>
           <h1>HuskieBot</h1>
           <StyledLogo src={huskieBot} alt="logo" />
           <p>
-            {newChat('colloquialisms')}
+            {chat}
           </p>
           <StyledButtonGroup>
-            <StyledButton>
+            <StyledButton onClick={() => this.setState({ chat: newChat('colloquialisms') })}>
               Shite
             </StyledButton>
-            <StyledButton>
+            <StyledButton onClick={() => this.setState({ chat: newChat('wisdom') })}>>
               Wisdom
             </StyledButton>
           </StyledButtonGroup>
@@ -79,5 +90,9 @@ class HuskieBot extends Component {
     )
   }
 }
+
+HuskieBot.defaultProps = {
+  chat: newChat('colloquialisms'),
+};
 
 export { HuskieBot };
