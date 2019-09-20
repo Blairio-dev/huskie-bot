@@ -81,7 +81,7 @@ class HuskieBot extends Component {
             <StyledButton onClick={() => this.setState({ chat: newChat('colloquialisms') })}>
               Shite
             </StyledButton>
-            <StyledButton onClick={() => this.setState({ chat: newChat('wisdom') })}>>
+            <StyledButton onClick={() => this.setState({ chat: newChat('wisdom') })}>
               Wisdom
             </StyledButton>
           </StyledButtonGroup>
