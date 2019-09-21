@@ -19,7 +19,11 @@ const StyledButton = styled('button')`
 const StyledButtonGroup = styled('div')`
   align-items: center;
   display: flex;
-  text-align: center;
+  text-align: inherit;
+`;
+
+const StyledChat = styled('p')`
+  margin: 0 0 8px 0;
 `;
 
 const StyledHeader = styled('header')`
@@ -31,6 +35,10 @@ const StyledHeader = styled('header')`
   font-size: calc(10px + 2vmin);
   justify-content: space-between;
   min-height: 100vh;
+`;
+
+const StyledHuskie = styled('div')`
+  text-align: inherit;
 `;
 
 const StyledLogo = styled('img')`
@@ -48,6 +56,30 @@ const StyledLogo = styled('img')`
     }
 `;
 
+const StyledInput = styled('input')`
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  height: 24px;
+  padding: 8px;
+  text-align: inherit;
+  width: -webkit-fill-available;
+
+  :focus {
+    border-radius: 24px;
+  }
+`;
+
+const StyledInterations = styled('div')`
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+`;
+
+const StyledWrapper = styled('div')`
+  text-align: center;
+`;
+
 function newChat(type) {
   let chat;
 
@@ -60,39 +92,51 @@ class HuskieBot extends Component {
   constructor(props) {
 		super(props);
 
-		const { chat = newChat('colloquialisms') } = props;
+		const { chat = newChat('colloquialisms'), adviceIsShown = false } = props;
 
 		this.state = {
+      adviceIsShown,
 			chat,
 		};
   }
   
   render() {
-    const { chat } = this.state;
+    const { chat, adviceIsShown } = this.state;
     return (
-      <div>
+      <StyledWrapper>
         <StyledHeader>
           <h1>HuskieBot</h1>
+          <StyledHuskie>
           <StyledLogo src={huskieBot} alt="logo" />
-          <p>
+          <StyledChat>
             {chat}
-          </p>
-          <StyledButtonGroup>
-            <StyledButton onClick={() => this.setState({ chat: newChat('colloquialisms') })}>
-              Shite
-            </StyledButton>
-            <StyledButton onClick={() => this.setState({ chat: newChat('wisdom') })}>
-              Wisdom
-            </StyledButton>
-          </StyledButtonGroup>
+          </StyledChat>
+          </StyledHuskie>
+          <StyledInterations>
+            <StyledButtonGroup>
+            <StyledButton onClick={() => this.setState({ adviceIsShown: true, chat: newChat('questions')  })}>
+                Advice
+              </StyledButton>
+              <StyledButton onClick={() => this.setState({ adviceIsShown: false, chat: newChat('foodPost') })}>
+                Feed
+              </StyledButton>
+              <StyledButton onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom') })}>
+                Wisdom
+              </StyledButton>
+            </StyledButtonGroup>
+            { adviceIsShown && 
+              <StyledInput onSubmit={() => this.setState({ chat: newChat('exclamations') })}/>
+            }
+          </StyledInterations>
         </StyledHeader>
-    </div>
+    </StyledWrapper>
     )
   }
 }
 
 HuskieBot.defaultProps = {
-  chat: newChat('colloquialisms'),
+  adviceIsShown: false,
+  chat: newChat('greetings'),
 };
 
 export { HuskieBot };
