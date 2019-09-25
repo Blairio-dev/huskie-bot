@@ -2,6 +2,7 @@ const huskisms = {
 	activities: [
 		'I’m off to get some new threads.',
 		'Let’s get few pots organised!',
+		'Let\'s get tanked up!',
 		'Let’s get potted up!',
 		'Let’s get sparkled!',
 	],
