@@ -4,6 +4,11 @@ import './HuskieBot.css';
 import huskieBot from '../src/assets/HuskieBot.svg';
 import { huskisms } from '../src/assets/huskisms';
 
+const StyledAskerWrapper = styled('div')`
+  display: inline-flex;
+  margin: 0 16px;
+`;
+
 const StyledButton = styled('button')`
   appearance: none;
   background: hsl(240, 22%, 18%);
@@ -58,22 +63,30 @@ const StyledLogo = styled('img')`
 
 const StyledInput = styled('input')`
   border: none;
-  border-radius: 24px;
   font-size: 16px;
   height: 24px;
+  margin-right: 8px;
   padding: 8px;
   text-align: inherit;
   width: -webkit-fill-available;
-
-  :focus {
-    border-radius: 24px;
-  }
 `;
 
 const StyledInterations = styled('div')`
   display: flex;
   flex-direction: column;
   padding: 16px;
+`;
+
+const StyledSubmitButton = styled('button')`
+  align-items: center;
+  appearance: none;
+  background: hsl(240, 22%, 18%);
+  border: 1px solid hsl(240, 22%, 58%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
 `;
 
 const StyledWrapper = styled('div')`
@@ -99,6 +112,19 @@ class HuskieBot extends Component {
 			chat,
 		};
   }
+
+  askQuestion() {
+    this.setState({ chat: newChat('answers') });
+    document.getElementById('questionInput').value = '';
+  }
+
+  enterPressed(event) {
+    var code = event.keyCode || event.which;
+
+    if(code === 13) {
+      this.askQuestion();
+    } 
+  }
   
   render() {
     const { chat, adviceIsShown } = this.state;
@@ -113,20 +139,31 @@ class HuskieBot extends Component {
           </StyledChat>
           </StyledHuskie>
           <StyledInterations>
-            <StyledButtonGroup>
-            <StyledButton onClick={() => this.setState({ adviceIsShown: true, chat: newChat('questions')  })}>
-                Advice
-              </StyledButton>
-              <StyledButton onClick={() => this.setState({ adviceIsShown: false, chat: newChat('foodPost') })}>
-                Feed
-              </StyledButton>
-              <StyledButton onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom') })}>
-                Wisdom
-              </StyledButton>
-            </StyledButtonGroup>
-            { adviceIsShown && 
-              <StyledInput onSubmit={() => this.setState({ chat: newChat('exclamations') })}/>
+          { adviceIsShown && 
+              <StyledAskerWrapper>
+                <StyledInput
+                  id="questionInput"
+                  onKeyPress={this.enterPressed.bind(this)}
+                />
+                <StyledSubmitButton
+                  id="askButton"
+                  onClick={() => this.askQuestion()}
+                > 
+                  Ask
+                </StyledSubmitButton>
+              </StyledAskerWrapper>
             }
+            <StyledButtonGroup>
+              <StyledButton onClick={() => this.setState({ adviceIsShown: true, chat: newChat('questions')  })}>
+                  Advice
+                </StyledButton>
+                <StyledButton onClick={() => this.setState({ adviceIsShown: false, chat: newChat('foodPost') })}>
+                  Feed
+                </StyledButton>
+                <StyledButton onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom') })}>
+                  Wisdom
+                </StyledButton>
+            </StyledButtonGroup>
           </StyledInterations>
         </StyledHeader>
     </StyledWrapper>
