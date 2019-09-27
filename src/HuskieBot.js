@@ -11,9 +11,10 @@ const StyledAskerWrapper = styled('div')`
 
 const StyledButton = styled('button')`
   appearance: none;
-  background: hsl(240, 22%, 18%);
-  border: 1px solid hsl(240, 22%, 58%);
+  background: ${props => props.adviceIsShown ? 'hsl(240, 22%, 28%)' : 'hsl(240, 22%, 18%)'};
+  border: 1px solid ${props => props.adviceIsShown ? 'hsl(240, 22%, 38%)' : 'hsl(240, 22%, 48%)'};
   color: hsl(0, 0%, 100%);
+  ${props => !props.adviceIsShown && 'cursor: pointer'};
   font-size: 14px;
   font-weight: bold;
   margin: 16px;
@@ -28,7 +29,7 @@ const StyledButtonGroup = styled('div')`
 `;
 
 const StyledChat = styled('p')`
-  margin: 0 0 8px 0;
+  margin: 0 8px 8px 8px;
 `;
 
 const StyledHeader = styled('header')`
@@ -63,6 +64,7 @@ const StyledLogo = styled('img')`
 
 const StyledInput = styled('input')`
   border: none;
+  border-radius: 0;
   font-size: 16px;
   height: 24px;
   margin-right: 8px;
@@ -80,9 +82,10 @@ const StyledInterations = styled('div')`
 const StyledSubmitButton = styled('button')`
   align-items: center;
   appearance: none;
-  background: hsl(240, 22%, 18%);
-  border: 1px solid hsl(240, 22%, 58%);
+  background: ${props => props.inputIsEmpty ? 'hsl(240, 22%, 28%)' : 'hsl(240, 22%, 18%)'};
+  border: 1px solid ${props => props.inputIsEmpty ? 'hsl(240, 22%, 38%)' : 'hsl(240, 22%, 48%)'};
   color: hsl(0, 0%, 100%);
+  ${props => !props.inputIsEmpty && 'cursor: pointer'};
   display: flex;
   font-size: 14px;
   font-weight: bold;
@@ -105,29 +108,41 @@ class HuskieBot extends Component {
   constructor(props) {
 		super(props);
 
-		const { chat = newChat('colloquialisms'), adviceIsShown = false } = props;
+		const { adviceIsShown = false, chat = newChat('colloquialisms'), inputIsEmpty = true } = props;
 
 		this.state = {
       adviceIsShown,
-			chat,
+      chat,
+      inputIsEmpty,
 		};
   }
 
   askQuestion() {
     this.setState({ chat: newChat('answers') });
     document.getElementById('questionInput').value = '';
+    this.setState({ inputIsEmpty: true })
   }
 
-  enterPressed(event) {
+  keyChecks(event) {
     var code = event.keyCode || event.which;
 
     if(code === 13) {
       this.askQuestion();
-    } 
+    }
   }
-  
+
+  inputValueCheck() {
+    if(document.getElementById('questionInput').value === '') {
+      this.setState({ inputIsEmpty: true });
+    }
+
+    if(document.getElementById('questionInput').value !== '') {
+      this.setState({ inputIsEmpty: false });
+    }
+  }
+    
   render() {
-    const { chat, adviceIsShown } = this.state;
+    const { adviceIsShown, chat, inputIsEmpty } = this.state;
     return (
       <StyledWrapper>
         <StyledHeader>
@@ -143,9 +158,12 @@ class HuskieBot extends Component {
               <StyledAskerWrapper>
                 <StyledInput
                   id="questionInput"
-                  onKeyPress={this.enterPressed.bind(this)}
+                  onChange={() => this.inputValueCheck()}
+                  onKeyPress={this.keyChecks.bind(this)}
                 />
                 <StyledSubmitButton
+                  disabled={inputIsEmpty}
+                  inputIsEmpty={inputIsEmpty}
                   id="askButton"
                   onClick={() => this.askQuestion()}
                 > 
@@ -154,7 +172,11 @@ class HuskieBot extends Component {
               </StyledAskerWrapper>
             }
             <StyledButtonGroup>
-              <StyledButton onClick={() => this.setState({ adviceIsShown: true, chat: newChat('questions')  })}>
+              <StyledButton
+                adviceIsShown={adviceIsShown}
+                disabled={adviceIsShown}
+                onClick={() => this.setState({ adviceIsShown: true, chat: newChat('questions')  })}
+              >
                   Advice
                 </StyledButton>
                 <StyledButton onClick={() => this.setState({ adviceIsShown: false, chat: newChat('foodPost') })}>
