@@ -1,25 +1,14 @@
 import React, { Component } from 'react';
-import styled from '@emotion/styled';
-import './HuskieBot.css';
-import huskieBot from '../src/assets/HuskieBot.svg';
+
+import { Button } from './components/Button/Button';
+import huskieBot from '../src/assets/huskieBot.svg';
 import { huskisms } from '../src/assets/huskisms';
+import styled from '@emotion/styled';
+import { SubmitButton } from './components/SubmitButton/SubmitButton';
 
 const StyledAskerWrapper = styled('div')`
   display: inline-flex;
   margin: 0 16px;
-`;
-
-const StyledButton = styled('button')`
-  appearance: none;
-  background: ${props => props.adviceIsShown ? 'hsl(240, 22%, 28%)' : 'hsl(240, 22%, 18%)'};
-  border: 1px solid ${props => props.adviceIsShown ? 'hsl(240, 22%, 38%)' : 'hsl(240, 22%, 48%)'};
-  color: hsl(0, 0%, 100%);
-  ${props => !props.adviceIsShown && 'cursor: pointer'};
-  font-size: 14px;
-  font-weight: bold;
-  margin: 16px;
-  min-width: 80px;
-  padding: 16px;
 `;
 
 const StyledButtonGroup = styled('div')`
@@ -47,21 +36,6 @@ const StyledHuskie = styled('div')`
   text-align: inherit;
 `;
 
-const StyledLogo = styled('img')`
-  animation: Head-shake infinite 0.5s alternate linear;
-  height: 40vmin;
-  margin-bottom: 8px;
-  pointer-events: none;
-
-  @keyframes Head-shake {
-    from {
-      transform: rotate(-5deg);
-    }
-    to {
-      transform: rotate(5deg);
-    }
-`;
-
 const StyledInput = styled('input')`
   border: none;
   border-radius: 0;
@@ -79,17 +53,19 @@ const StyledInterations = styled('div')`
   padding: 16px;
 `;
 
-const StyledSubmitButton = styled('button')`
-  align-items: center;
-  appearance: none;
-  background: ${props => props.inputIsEmpty ? 'hsl(240, 22%, 28%)' : 'hsl(240, 22%, 18%)'};
-  border: 1px solid ${props => props.inputIsEmpty ? 'hsl(240, 22%, 38%)' : 'hsl(240, 22%, 48%)'};
-  color: hsl(0, 0%, 100%);
-  ${props => !props.inputIsEmpty && 'cursor: pointer'};
-  display: flex;
-  font-size: 14px;
-  font-weight: bold;
-  height: 40px;
+const StyledLogo = styled('img')`
+  animation: Head-shake infinite 0.5s alternate linear;
+  height: 40vmin;
+  margin-bottom: 8px;
+  pointer-events: none;
+
+  @keyframes Head-shake {
+    from {
+      transform: rotate(-5deg);
+    }
+    to {
+      transform: rotate(5deg);
+    }
 `;
 
 const StyledWrapper = styled('div')`
@@ -148,10 +124,10 @@ class HuskieBot extends Component {
         <StyledHeader>
           <h1>HuskieBot</h1>
           <StyledHuskie>
-          <StyledLogo src={huskieBot} alt="logo" />
-          <StyledChat>
-            {chat}
-          </StyledChat>
+            <StyledLogo src={huskieBot} alt="logo" />
+            <StyledChat>
+              {chat}
+            </StyledChat>
           </StyledHuskie>
           <StyledInterations>
           { adviceIsShown && 
@@ -161,30 +137,32 @@ class HuskieBot extends Component {
                   onChange={() => this.inputValueCheck()}
                   onKeyPress={this.keyChecks.bind(this)}
                 />
-                <StyledSubmitButton
-                  disabled={inputIsEmpty}
+                <SubmitButton
+                  isDisabled={inputIsEmpty}
                   inputIsEmpty={inputIsEmpty}
                   id="askButton"
                   onClick={() => this.askQuestion()}
-                > 
-                  Ask
-                </StyledSubmitButton>
+                  text="Ask"
+                />
               </StyledAskerWrapper>
             }
             <StyledButtonGroup>
-              <StyledButton
+              <Button
                 adviceIsShown={adviceIsShown}
-                disabled={adviceIsShown}
-                onClick={() => this.setState({ adviceIsShown: true, chat: newChat('questions')  })}
-              >
-                  Advice
-                </StyledButton>
-                <StyledButton onClick={() => this.setState({ adviceIsShown: false, chat: newChat('foodPost') })}>
-                  Feed
-                </StyledButton>
-                <StyledButton onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom') })}>
-                  Wisdom
-                </StyledButton>
+                isDisabled={adviceIsShown}
+                onClick={() => this.setState({ adviceIsShown: true, chat: newChat('questions') })}
+                text="Advice"
+              />
+              <Button
+                adviceIsShown={adviceIsShown}
+                onClick={() => this.setState({ adviceIsShown: false, chat: newChat('foodPost') })}
+                text="Feed"
+              />
+              <Button
+                adviceIsShown={adviceIsShown}
+                onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom') })}
+                text="Wisdom"
+              />
             </StyledButtonGroup>
           </StyledInterations>
         </StyledHeader>
