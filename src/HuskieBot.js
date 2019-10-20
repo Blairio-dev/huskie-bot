@@ -163,43 +163,43 @@ class HuskieBot extends Component {
           </StyledHuskie>
           <StyledInterations>
           { adviceIsShown && 
-              <StyledAskerWrapper>
-                <StyledInput
-                  id="questionInput"
-                  onChange={() => this.inputValueCheck()}
-                  onKeyPress={this.keyChecks.bind(this)}
-                />
-                <SubmitButton
-                  isDisabled={inputIsEmpty}
-                  inputIsEmpty={inputIsEmpty}
-                  id="askButton"
-                  onClick={() => this.askQuestion()}
-                  text="Ask"
-                />
-              </StyledAskerWrapper>
-            }
-            <StyledButtonGroup>
-              <Button
-                adviceIsShown={adviceIsShown}
-                isDisabled={adviceIsShown}
-                onClick={() =>
-                  this.setState({ adviceIsShown: true, chat: newChat('questions'), previousQuestion: ''})
-                }
-                text="Advice"
+            <StyledAskerWrapper>
+              <StyledInput
+                id="questionInput"
+                onChange={() => this.inputValueCheck()}
+                onKeyPress={this.keyChecks.bind(this)}
               />
-              <Button
-                adviceIsShown={adviceIsShown}
-                onClick={() => this.setState({adviceIsShown: false, chat: newChat('foodPost')})}
-                text="Feed"
+              <SubmitButton
+                isDisabled={inputIsEmpty}
+                inputIsEmpty={inputIsEmpty}
+                id="askButton"
+                onClick={() => this.askQuestion()}
+                text="Ask"
               />
-              <Button
-                adviceIsShown={adviceIsShown}
-                onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom')})}
-                text="Wisdom"
-              />
-            </StyledButtonGroup>
-          </StyledInterations>
-        </StyledHeader>
+            </StyledAskerWrapper>
+        }
+          <StyledButtonGroup>
+            <Button
+              adviceIsShown={adviceIsShown}
+              isDisabled={adviceIsShown}
+              onClick={() =>
+                this.setState({ adviceIsShown: true, chat: newChat('questions'), previousQuestion: ''})
+              }
+              text="Advice"
+            />
+            <Button
+              adviceIsShown={adviceIsShown}
+              onClick={() => this.setState({adviceIsShown: false, chat: newChat('foodPost')})}
+              text="Feed"
+            />
+            <Button
+              adviceIsShown={adviceIsShown}
+              onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom')})}
+              text="Wisdom"
+            />
+          </StyledButtonGroup>
+        </StyledInterations>
+      </StyledHeader>
     </StyledWrapper>
     )
   }
