@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Button } from './components/Button/Button';
-import huskieBot from '../src/assets/huskieBot.svg';
+import huskieBot from '../src/assets/HuskieBot.svg';
 import { huskisms } from '../src/assets/huskisms';
 import styled from '@emotion/styled';
 import { Asker } from './components/Asker/Asker';
