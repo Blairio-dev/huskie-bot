@@ -17,8 +17,8 @@ const StyledButton = styled('button')`
 
 const Button = ({ isDisabled, onClick, text }) => (
     <StyledButton
-                disabled={isDisabled}
-                onClick={onClick}
+        disabled={isDisabled}
+        onClick={onClick}
     >
         {text}
     </StyledButton>

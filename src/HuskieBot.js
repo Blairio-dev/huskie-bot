@@ -17,8 +17,21 @@ const StyledButtonGroup = styled('div')`
   text-align: inherit;
 `;
 
-const StyledChat = styled('p')`
-  margin: 0 8px 8px 8px;
+const StyledChat = styled('span')`
+  animation: typing 2s steps(44) 1 normal both;
+  overflow: hidden;
+  white-space: nowrap;
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+`;
+
+const StyledChatWrapper = styled('p')`
+  display: flex;
+  flex-direction: column;
+  margin: 0 8px 16px 8px;
 `;
 
 const StyledHeader = styled('header')`
@@ -68,6 +81,12 @@ const StyledLogo = styled('img')`
     }
 `;
 
+const StyledPreviousQuetion = styled('span')`
+  color: hsl(48, 88%, 67%);
+  font-size: calc(12px + 2vmin);
+  margin-bottom: 2px;
+`;
+
 const StyledWrapper = styled('div')`
   text-align: center;
 `;
@@ -84,19 +103,29 @@ class HuskieBot extends Component {
   constructor(props) {
 		super(props);
 
-		const { adviceIsShown = false, chat = newChat('colloquialisms'), inputIsEmpty = true } = props;
+		const { 
+      adviceIsShown = false,
+      chat = newChat('colloquialisms'),
+      inputIsEmpty = true,
+      previousQuestion = '',
+    } = props;
 
 		this.state = {
       adviceIsShown,
       chat,
       inputIsEmpty,
+      previousQuestion,
 		};
   }
 
   askQuestion() {
-    this.setState({ chat: newChat('answers') });
+    this.setState({ chat: newChat('answers'), previousQuestion: document.getElementById('questionInput').value });
     document.getElementById('questionInput').value = '';
     this.setState({ inputIsEmpty: true })
+  }
+
+  clearLastQuestion() {
+    this.setState({ previousQuestion: '' });
   }
 
   keyChecks(event) {
@@ -118,16 +147,19 @@ class HuskieBot extends Component {
   }
     
   render() {
-    const { adviceIsShown, chat, inputIsEmpty } = this.state;
+    const { adviceIsShown, chat, inputIsEmpty, previousQuestion } = this.state;
     return (
       <StyledWrapper>
         <StyledHeader>
           <h1>HuskieBot</h1>
           <StyledHuskie>
             <StyledLogo src={huskieBot} alt="logo" />
-            <StyledChat>
-              {chat}
-            </StyledChat>
+            <StyledChatWrapper>
+              {previousQuestion && adviceIsShown &&
+                <StyledPreviousQuetion>{previousQuestion}</StyledPreviousQuetion>
+              }
+              <StyledChat>{chat}</StyledChat>
+            </StyledChatWrapper>
           </StyledHuskie>
           <StyledInterations>
           { adviceIsShown && 
@@ -150,17 +182,19 @@ class HuskieBot extends Component {
               <Button
                 adviceIsShown={adviceIsShown}
                 isDisabled={adviceIsShown}
-                onClick={() => this.setState({ adviceIsShown: true, chat: newChat('questions') })}
+                onClick={() =>
+                  this.setState({ adviceIsShown: true, chat: newChat('questions'), previousQuestion: ''})
+                }
                 text="Advice"
               />
               <Button
                 adviceIsShown={adviceIsShown}
-                onClick={() => this.setState({ adviceIsShown: false, chat: newChat('foodPost') })}
+                onClick={() => this.setState({adviceIsShown: false, chat: newChat('foodPost')})}
                 text="Feed"
               />
               <Button
                 adviceIsShown={adviceIsShown}
-                onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom') })}
+                onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom')})}
                 text="Wisdom"
               />
             </StyledButtonGroup>
