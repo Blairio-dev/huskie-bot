@@ -4,28 +4,12 @@ import { Button } from './components/Button/Button';
 import huskieBot from '../src/assets/huskieBot.svg';
 import { huskisms } from '../src/assets/huskisms';
 import styled from '@emotion/styled';
-import { SubmitButton } from './components/SubmitButton/SubmitButton';
-
-const StyledAskerWrapper = styled('div')`
-  display: inline-flex;
-  margin: 0 16px;
-`;
+import { Asker } from './components/Asker/Asker';
 
 const StyledButtonGroup = styled('div')`
   align-items: center;
   display: flex;
   text-align: inherit;
-`;
-
-const StyledChat = styled('span')`
-  animation: typing 2s steps(44) 1 normal both;
-  overflow: hidden;
-  white-space: nowrap;
-
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
 `;
 
 const StyledChatWrapper = styled('p')`
@@ -47,17 +31,6 @@ const StyledHeader = styled('header')`
 
 const StyledHuskie = styled('div')`
   text-align: inherit;
-`;
-
-const StyledInput = styled('input')`
-  border: none;
-  border-radius: 0;
-  font-size: 16px;
-  height: 24px;
-  margin-right: 8px;
-  padding: 8px;
-  text-align: inherit;
-  width: -webkit-fill-available;
 `;
 
 const StyledInterations = styled('div')`
@@ -106,48 +79,28 @@ class HuskieBot extends Component {
 		const { 
       adviceIsShown = false,
       chat = newChat('colloquialisms'),
-      inputIsEmpty = true,
       previousQuestion = '',
     } = props;
+
+    this.updateQuestionChats = this.updateQuestionChats.bind(this);
 
 		this.state = {
       adviceIsShown,
       chat,
-      inputIsEmpty,
       previousQuestion,
 		};
   }
 
-  askQuestion() {
+  updateQuestionChats() {
     this.setState({ chat: newChat('answers'), previousQuestion: document.getElementById('questionInput').value });
-    document.getElementById('questionInput').value = '';
-    this.setState({ inputIsEmpty: true })
   }
 
   clearLastQuestion() {
     this.setState({ previousQuestion: '' });
   }
-
-  keyChecks(event) {
-    var code = event.keyCode || event.which;
-
-    if(code === 13) {
-      this.askQuestion();
-    }
-  }
-
-  inputValueCheck() {
-    if(document.getElementById('questionInput').value === '') {
-      this.setState({ inputIsEmpty: true });
-    }
-
-    if(document.getElementById('questionInput').value !== '') {
-      this.setState({ inputIsEmpty: false });
-    }
-  }
     
   render() {
-    const { adviceIsShown, chat, inputIsEmpty, previousQuestion } = this.state;
+    const { adviceIsShown, chat, previousQuestion } = this.state;
     return (
       <StyledWrapper>
         <StyledHeader>
@@ -158,26 +111,11 @@ class HuskieBot extends Component {
               {previousQuestion && adviceIsShown &&
                 <StyledPreviousQuetion>{previousQuestion}</StyledPreviousQuetion>
               }
-              <StyledChat>{chat}</StyledChat>
+              <span>{chat}</span>
             </StyledChatWrapper>
           </StyledHuskie>
           <StyledInterations>
-          { adviceIsShown && 
-            <StyledAskerWrapper>
-              <StyledInput
-                id="questionInput"
-                onChange={() => this.inputValueCheck()}
-                onKeyPress={this.keyChecks.bind(this)}
-              />
-              <SubmitButton
-                isDisabled={inputIsEmpty}
-                inputIsEmpty={inputIsEmpty}
-                id="askButton"
-                onClick={() => this.askQuestion()}
-                text="Ask"
-              />
-            </StyledAskerWrapper>
-        }
+          { adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} /> }
           <StyledButtonGroup>
             <Button
               adviceIsShown={adviceIsShown}
