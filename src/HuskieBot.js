@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 
 import { Button } from './components/Button/Button';
 import huskieBot from '../src/assets/HuskieBot.svg';
+import { BoostBowl, PepsiMax, Pretzels } from '../src/components/Icons/icons.js';
 import { huskisms } from '../src/assets/huskisms';
 import styled from '@emotion/styled';
+import { BoostButton } from './components/BoostButton/BoostButton';
 import { Asker } from './components/Asker/Asker';
+
+const BoostWrapper = styled('div')`
+  height: 108px;
+  position: relative;
+`;
 
 const StyledButtonGroup = styled('div')`
   align-items: center;
@@ -78,6 +85,7 @@ class HuskieBot extends Component {
 
 		const { 
       adviceIsShown = false,
+      boostsAreShown = false,
       chat = newChat('colloquialisms'),
       previousQuestion = '',
     } = props;
@@ -86,6 +94,7 @@ class HuskieBot extends Component {
 
 		this.state = {
       adviceIsShown,
+      boostsAreShown,
       chat,
       previousQuestion,
 		};
@@ -100,7 +109,7 @@ class HuskieBot extends Component {
   }
     
   render() {
-    const { adviceIsShown, chat, previousQuestion } = this.state;
+    const { adviceIsShown, boostsAreShown, chat, previousQuestion } = this.state;
     return (
       <StyledWrapper>
         <StyledHeader>
@@ -116,23 +125,29 @@ class HuskieBot extends Component {
           </StyledHuskie>
           <StyledInterations>
           { adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} /> }
+          { boostsAreShown && <BoostWrapper>
+            <BoostButton image={BoostBowl} left={8} />
+            <BoostButton image={Pretzels} left={130} />
+            <BoostButton image={PepsiMax} left={269} />
+          </BoostWrapper>
+          }
           <StyledButtonGroup>
             <Button
               adviceIsShown={adviceIsShown}
               isDisabled={adviceIsShown}
               onClick={() =>
-                this.setState({ adviceIsShown: true, chat: newChat('questions'), previousQuestion: ''})
+                this.setState({ adviceIsShown: true, boostsAreShown: false, chat: newChat('questions'), previousQuestion: ''})
               }
               text="Advice"
             />
             <Button
               adviceIsShown={adviceIsShown}
-              onClick={() => this.setState({adviceIsShown: false, chat: newChat('foodPost')})}
+              onClick={() => this.setState({adviceIsShown: false, boostsAreShown: true, chat: newChat('foodPost')})}
               text="Feed"
             />
             <Button
               adviceIsShown={adviceIsShown}
-              onClick={() => this.setState({ adviceIsShown: false, chat: newChat('wisdom')})}
+              onClick={() => this.setState({ adviceIsShown: false, boostsAreShown: false, chat: newChat('wisdom')})}
               text="Wisdom"
             />
           </StyledButtonGroup>
@@ -145,6 +160,7 @@ class HuskieBot extends Component {
 
 HuskieBot.defaultProps = {
   adviceIsShown: false,
+  boostsAreShown: false,
   chat: newChat('greetings'),
 };
 
