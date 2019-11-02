@@ -54,10 +54,14 @@ const huskisms = {
 		'Wee jacko.',
 	],
 	food: [
+		'A wee boost?',
+		'Let’s get pretzeled up.',
+		'Oh yes!',
+	],
+	foodDecision: [
 		'A wee Ichiban.',
 		'Marks and Sparks.',
-		'Let’s get pretzeled up.',
-		'The colonel',
+		'The colonel.',
 		'The golden arches.',
 	],
 	foodPost: [

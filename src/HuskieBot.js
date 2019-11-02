@@ -126,9 +126,21 @@ class HuskieBot extends Component {
           <StyledInterations>
           { adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} /> }
           { boostsAreShown && <BoostWrapper>
-            <BoostButton image={BoostBowl} left={8} />
-            <BoostButton image={Pretzels} left={130} />
-            <BoostButton image={PepsiMax} left={269} />
+            <BoostButton
+              image={BoostBowl}
+              left={8}
+              onClick={() => this.setState({chat: newChat('foodPost')})}
+            />
+            <BoostButton
+              image={Pretzels}
+              left={131}
+              onClick={() => this.setState({chat: newChat('foodPost')})}
+            />
+            <BoostButton
+              image={PepsiMax}
+              left={269}
+              onClick={() => this.setState({chat: newChat('foodPost')})}
+              />
           </BoostWrapper>
           }
           <StyledButtonGroup>
@@ -142,7 +154,8 @@ class HuskieBot extends Component {
             />
             <Button
               adviceIsShown={adviceIsShown}
-              onClick={() => this.setState({adviceIsShown: false, boostsAreShown: true, chat: newChat('foodPost')})}
+              isDisabled={boostsAreShown}
+              onClick={() => this.setState({adviceIsShown: false, boostsAreShown: true, chat: newChat('food')})}
               text="Feed"
             />
             <Button
