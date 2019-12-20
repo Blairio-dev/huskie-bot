@@ -44,6 +44,7 @@ const huskisms = {
 		'Let’s dispense with the verbal sparring.',
 		'Oh well!',
 		'Potless.',
+		'She thinks my arse is lined with diamonds!',
 		'This is excruciating!',
 		'We’re on tenterhooks here.',
 		'Well that didnae work!',
@@ -78,11 +79,13 @@ const huskisms = {
 		'Let’s louse.',
 	],
 	greetings: [
+		"At last!",
 		"Nice of you to join us!",
 		'Listen...',
 		'Picture the scene...',
 		'Picture the scenario...',
 		'There’s been a development.',
+		'We’ve been waiting hours for you to turn up!',
 		"What time do you call this?",
 	],
 	names: [
@@ -94,6 +97,7 @@ const huskisms = {
 	],
 	questions: [
 		'Can I help you?',
+		'Do you actually know what you’re doing?',
 		'I’m trying to get on for some work here!',
 		'Let’s just see, shall we?',
 		'Let’s talk tactics.',
