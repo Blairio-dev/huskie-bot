@@ -10,7 +10,6 @@ import { PatterPanel } from './components/PatterPanel/PatterPanel';
 import styled from '@emotion/styled';
 
 const BoostWrapper = styled('div')`
-  height: 108px;
   position: relative;
 `;
 
@@ -24,6 +23,7 @@ const StyledChatWrapper = styled('p')`
   display: flex;
   flex-direction: column;
   margin: 0 8px 16px 8px;
+  min-height: 58px;
 `;
 
 const StyledHeader = styled('header')`
@@ -40,12 +40,12 @@ const StyledInterations = styled('div')`
   flex-direction: column;
   justify-content: flex-end;
   min-height: 28vh;
-  padding: 16px;
+  padding: 16px 16px 0 16px;
 `;
 
 const StyledLogo = styled('img')`
   animation: Head-shake infinite 0.5s alternate linear;
-  height: 36vmin;
+  height: 210px;
   margin-bottom: 8px;
   pointer-events: none;
 
@@ -61,7 +61,7 @@ const StyledLogo = styled('img')`
 const StyledPreviousQuetion = styled('span')`
   color: hsl(48, 88%, 67%);
   font-size: calc(12px + 2vmin);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 `;
 
 const StyledWrapper = styled('div')`
