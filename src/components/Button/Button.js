@@ -12,7 +12,7 @@ const StyledButton = styled('button')`
   font-weight: bold;
   margin: 16px;
   min-width: 80px;
-  padding: 16px;
+  padding: 16px 8px;
 `;
 
 const Button = ({ isDisabled, onClick, text }) => (

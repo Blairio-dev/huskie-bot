@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
+import { Asker } from './components/Asker/Asker';
+import { BoostBowl, PepsiMax, Pretzels } from '../src/components/Icons/icons.js';
+import { BoostButton } from './components/BoostButton/BoostButton';
 import { Button } from './components/Button/Button';
 import huskieBot from '../src/assets/HuskieBot.svg';
-import { BoostBowl, PepsiMax, Pretzels } from '../src/components/Icons/icons.js';
 import { huskisms } from '../src/assets/huskisms';
+import { PatterPanel } from './components/PatterPanel/PatterPanel';
 import styled from '@emotion/styled';
-import { BoostButton } from './components/BoostButton/BoostButton';
-import { Asker } from './components/Asker/Asker';
 
 const BoostWrapper = styled('div')`
   height: 108px;
@@ -71,8 +72,9 @@ const StyledWrapper = styled('div')`
   text-align: center;
 `;
 
-function newChat(type) {
+const newChat = type => {
   let chat;
+  console.log(type);
 
   chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
 
@@ -87,15 +89,18 @@ class HuskieBot extends Component {
       adviceIsShown = false,
       boostsAreShown = false,
       chat = newChat('colloquialisms'),
+      patterIsShown = false,
       previousQuestion = '',
     } = props;
 
+    this.updateChat = this.updateChat.bind(this);
     this.updateQuestionChats = this.updateQuestionChats.bind(this);
 
 		this.state = {
       adviceIsShown,
       boostsAreShown,
       chat,
+      patterIsShown,
       previousQuestion,
 		};
   }
@@ -104,12 +109,15 @@ class HuskieBot extends Component {
     this.setState({ chat: newChat('answers'), previousQuestion: document.getElementById('questionInput').value });
   }
 
-  clearLastQuestion() {
-    this.setState({ previousQuestion: '' });
-  }
+  updateChat = type => {
+    let chat;
+    chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
+    this.setState({ chat: chat });;
+  };
     
   render() {
-    const { adviceIsShown, boostsAreShown, chat, previousQuestion } = this.state;
+    const { adviceIsShown, boostsAreShown, chat, patterIsShown, previousQuestion } = this.state;
+
     return (
       <StyledWrapper>
         <StyledHeader>
@@ -143,25 +151,24 @@ class HuskieBot extends Component {
               />
           </BoostWrapper>
           }
+          { patterIsShown && <PatterPanel onClick={this.updateChat} /> }
           <StyledButtonGroup>
             <Button
-              adviceIsShown={adviceIsShown}
               isDisabled={adviceIsShown}
               onClick={() =>
-                this.setState({ adviceIsShown: true, boostsAreShown: false, chat: newChat('questions'), previousQuestion: ''})
+                this.setState({ adviceIsShown: true, boostsAreShown: false, patterIsShown: false, chat: newChat('questions'), previousQuestion: ''})
               }
               text="Advice"
             />
             <Button
-              adviceIsShown={adviceIsShown}
               isDisabled={boostsAreShown}
-              onClick={() => this.setState({adviceIsShown: false, boostsAreShown: true, chat: newChat('food')})}
+              onClick={() => this.setState({adviceIsShown: false, boostsAreShown: true, patterIsShown: false, chat: newChat('food')})}
               text="Feed"
             />
             <Button
-              adviceIsShown={adviceIsShown}
-              onClick={() => this.setState({ adviceIsShown: false, boostsAreShown: false, chat: newChat('wisdom')})}
-              text="Wisdom"
+              isDisabled={patterIsShown}
+              onClick={() => this.setState({ adviceIsShown: false, boostsAreShown: false, patterIsShown: true, chat: newChat('coversational')})}
+              text="Patter"
             />
           </StyledButtonGroup>
         </StyledInterations>
