@@ -74,10 +74,7 @@ const StyledWrapper = styled('div')`
 
 const newChat = type => {
   let chat;
-  console.log(type);
-
   chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
-
   return chat;
 };
 

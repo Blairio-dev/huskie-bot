@@ -1,6 +1,8 @@
 const huskisms = {
 	activities: [
+		'How about you treat me to my lunch?',
 		'I’m off to get some new threads.',
+		'I\'ve got a kilt fitting I need to get to.',
 		'Let’s get few pots organised!',
 		'Let\'s get tanked up!',
 		'Let’s get potted up!',
@@ -13,6 +15,7 @@ const huskisms = {
 		'Are you sure about that?',
 		'I\'m coming up with... blankety blank.',
 		'Good shout!',
+		'HUH',
 		'It\'s borked!',
 		'No way, man!',
 		'Not now. I\'m panzered.',
@@ -23,9 +26,10 @@ const huskisms = {
 		'Yes. Trust me.',
 	],
 	coversational: [
+		'Huh?',
 		'I\'ve got something to say and I don’t mind telling you.',
-		'We need to talk and I mean A S A P.',
 		'Let\'s talk if you think you’re so smart.',
+		'We need to talk and I mean A S A P.',
 		'You and me, the old double act.',
 	],
 	exclamations: [

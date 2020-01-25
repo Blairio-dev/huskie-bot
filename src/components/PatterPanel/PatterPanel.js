@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Button } from '../Button/Button';
+import { PatterButton } from '../PatterButton/PatterButton';
 
 const StyledButtonGroup = styled('div')`
   align-items: center;
@@ -10,17 +10,17 @@ const StyledButtonGroup = styled('div')`
 
 const PatterPanel = ( { onClick }) => (
     <StyledButtonGroup>
-        <Button
+        <PatterButton
             onClick={() => onClick('activities')}
             text="Activites"
         />
-        <Button
+        <PatterButton
             onClick={() => onClick('wisdom')}
             text="Wisdom"
         />
-        <Button
+        <PatterButton
             onClick={() => onClick('exclamations')}
-            text="???"
+            text="Drivel"
         />
     </StyledButtonGroup>
 );
