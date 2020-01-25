@@ -40,7 +40,7 @@ const StyledInterations = styled('div')`
   flex-direction: column;
   justify-content: flex-end;
   min-height: 28vh;
-  padding: 16px 16px 0 16px;
+  padding: 16px;
 `;
 
 const StyledLogo = styled('img')`
