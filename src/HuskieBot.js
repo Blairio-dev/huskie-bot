@@ -27,29 +27,25 @@ const StyledChatWrapper = styled('p')`
 `;
 
 const StyledHeader = styled('header')`
-  align-items: center;
-  background-color: hsl(335, 23%, 18%);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: space-between;
-  min-height: 100vh;
+  min-height: 20vh;
 `;
 
 const StyledHuskie = styled('div')`
+  min-height: 20vh;
   text-align: inherit;
 `;
 
 const StyledInterations = styled('div')`
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  min-height: 28vh;
   padding: 16px;
 `;
 
 const StyledLogo = styled('img')`
   animation: Head-shake infinite 0.5s alternate linear;
-  height: 40vmin;
+  height: 36vmin;
   margin-bottom: 8px;
   pointer-events: none;
 
@@ -69,7 +65,15 @@ const StyledPreviousQuetion = styled('span')`
 `;
 
 const StyledWrapper = styled('div')`
+  align-items: center;
+  background-color: hsl(335, 23%, 18%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
   text-align: center;
+  min-height: 100vh;
 `;
 
 const newChat = type => {
@@ -119,57 +123,57 @@ class HuskieBot extends Component {
       <StyledWrapper>
         <StyledHeader>
           <h1>HuskieBot</h1>
-          <StyledHuskie>
-            <StyledLogo src={huskieBot} alt="logo" />
-            <StyledChatWrapper>
-              {previousQuestion && adviceIsShown &&
-                <StyledPreviousQuetion>{previousQuestion}</StyledPreviousQuetion>
-              }
-              <span>{chat}</span>
-            </StyledChatWrapper>
-          </StyledHuskie>
-          <StyledInterations>
-          { adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} /> }
-          { boostsAreShown && <BoostWrapper>
-            <BoostButton
-              image={BoostBowl}
-              left={8}
-              onClick={() => this.setState({chat: newChat('foodPost')})}
+        </StyledHeader>
+        <StyledHuskie>
+          <StyledLogo src={huskieBot} alt="logo" />
+          <StyledChatWrapper>
+            {previousQuestion && adviceIsShown &&
+              <StyledPreviousQuetion>{previousQuestion}</StyledPreviousQuetion>
+            }
+            <span>{chat}</span>
+          </StyledChatWrapper>
+        </StyledHuskie>
+        <StyledInterations>
+        { adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} /> }
+        { boostsAreShown && <BoostWrapper>
+          <BoostButton
+            image={BoostBowl}
+            left={8}
+            onClick={() => this.setState({chat: newChat('foodPost')})}
+          />
+          <BoostButton
+            image={Pretzels}
+            left={131}
+            onClick={() => this.setState({chat: newChat('foodPost')})}
+          />
+          <BoostButton
+            image={PepsiMax}
+            left={269}
+            onClick={() => this.setState({chat: newChat('foodPost')})}
             />
-            <BoostButton
-              image={Pretzels}
-              left={131}
-              onClick={() => this.setState({chat: newChat('foodPost')})}
-            />
-            <BoostButton
-              image={PepsiMax}
-              left={269}
-              onClick={() => this.setState({chat: newChat('foodPost')})}
-              />
-          </BoostWrapper>
-          }
-          { patterIsShown && <PatterPanel onClick={this.updateChat} /> }
-          <StyledButtonGroup>
-            <Button
-              isDisabled={adviceIsShown}
-              onClick={() =>
-                this.setState({ adviceIsShown: true, boostsAreShown: false, patterIsShown: false, chat: newChat('questions'), previousQuestion: ''})
-              }
-              text="Advice"
-            />
-            <Button
-              isDisabled={boostsAreShown}
-              onClick={() => this.setState({adviceIsShown: false, boostsAreShown: true, patterIsShown: false, chat: newChat('food')})}
-              text="Feed"
-            />
-            <Button
-              isDisabled={patterIsShown}
-              onClick={() => this.setState({ adviceIsShown: false, boostsAreShown: false, patterIsShown: true, chat: newChat('coversational')})}
-              text="Patter"
-            />
-          </StyledButtonGroup>
-        </StyledInterations>
-      </StyledHeader>
+        </BoostWrapper>
+        }
+        { patterIsShown && <PatterPanel onClick={this.updateChat} /> }
+        <StyledButtonGroup>
+          <Button
+            isDisabled={adviceIsShown}
+            onClick={() =>
+              this.setState({ adviceIsShown: true, boostsAreShown: false, patterIsShown: false, chat: newChat('questions'), previousQuestion: ''})
+            }
+            text="Advice"
+          />
+          <Button
+            isDisabled={boostsAreShown}
+            onClick={() => this.setState({adviceIsShown: false, boostsAreShown: true, patterIsShown: false, chat: newChat('food')})}
+            text="Feed"
+          />
+          <Button
+            isDisabled={patterIsShown}
+            onClick={() => this.setState({ adviceIsShown: false, boostsAreShown: false, patterIsShown: true, chat: newChat('coversational')})}
+            text="Patter"
+          />
+        </StyledButtonGroup>
+      </StyledInterations>
     </StyledWrapper>
     )
   }
