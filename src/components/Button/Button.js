@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 const StyledButton = styled('button')`
   appearance: none;
   background: ${props => props.disabled ? 'hsl(240, 22%, 28%)' : 'hsl(240, 22%, 18%)'};
-  border: 1px solid ${props => props.disabled ? 'hsl(240, 22%, 38%)' : 'hsl(240, 22%, 48%)'};
+  border: 1px solid ${props => props.disabled ? 'hsl(47, 98%, 63%)' : 'hsl(240, 22%, 48%)'};
   color: hsl(0, 0%, 100%);
   ${props => !props.disabled && 'cursor: pointer'};
   font-size: 14px;
@@ -15,9 +15,9 @@ const StyledButton = styled('button')`
   padding: 16px 8px;
 `;
 
-const Button = ({ isDisabled, onClick, text }) => (
+const Button = ({ isActive, onClick, text }) => (
     <StyledButton
-        disabled={isDisabled}
+        disabled={isActive}
         onClick={onClick}
     >
         {text}
@@ -25,8 +25,8 @@ const Button = ({ isDisabled, onClick, text }) => (
 );
 
 Button.propTypes = {
-	/** Sets disbled state. */
-    isDisabled: PropTypes.bool,
+	/** Sets active state. */
+    isActive: PropTypes.bool,
     /** Handler invoked when the button is clicked. */
     onClick: PropTypes.func,
     /** Text disaplyed in the button. */
@@ -34,7 +34,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-    isDisabled: false,
+    isActive: false,
 };
 
 export { Button };

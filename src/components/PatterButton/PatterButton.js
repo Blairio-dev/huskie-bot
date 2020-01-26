@@ -12,7 +12,7 @@ const StyledButton = styled('button')`
   font-weight: bold;
   margin: 16px 16px 0 16px;
   min-width: 80px;
-  padding: 16px 8px;
+  padding: 11px 8px;
 `;
 
 const PatterButton = ({ isDisabled, onClick, text }) => (

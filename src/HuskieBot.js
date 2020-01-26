@@ -156,19 +156,19 @@ class HuskieBot extends Component {
         { patterIsShown && <PatterPanel onClick={this.updateChat} /> }
         <StyledButtonGroup>
           <Button
-            isDisabled={adviceIsShown}
+            isActive={adviceIsShown}
             onClick={() =>
               this.setState({ adviceIsShown: true, boostsAreShown: false, patterIsShown: false, chat: newChat('questions'), previousQuestion: ''})
             }
             text="Advice"
           />
           <Button
-            isDisabled={boostsAreShown}
+            isActive={boostsAreShown}
             onClick={() => this.setState({adviceIsShown: false, boostsAreShown: true, patterIsShown: false, chat: newChat('food')})}
             text="Feed"
           />
           <Button
-            isDisabled={patterIsShown}
+            isActive={patterIsShown}
             onClick={() => this.setState({ adviceIsShown: false, boostsAreShown: false, patterIsShown: true, chat: newChat('coversational')})}
             text="Patter"
           />
