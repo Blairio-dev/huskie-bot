@@ -3,10 +3,10 @@ import styled from '@emotion/styled';
 
 import { Asker } from './components/Asker/Asker';
 import { BoostPanel } from './components/BoostPanel/BoostPanel';
-import { ButtonNav } from './components/ButtonNav/ButtonNav';
+import { HuskieIconTile } from './components/HuskieIconTile/HuskieIconTile';
 import { huskisms } from '../src/assets/huskisms';
 import { PatterPanel } from './components/PatterPanel/PatterPanel';
-import { HuskieIconTile } from './components/HuskieIconTile/HuskieIconTile';
+import { SegmentedSlider } from './components/SegmentedSlider/SegmentedSlider';
 
 const StyledHeader = styled('header')`
   min-height: 20vh;
@@ -93,7 +93,7 @@ class HuskieBot extends Component {
         { adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} /> }
         { boostsAreShown && <BoostPanel onClick={this.updateChat}/> }
         { patterIsShown && <PatterPanel onClick={this.updateChat} /> }
-        <ButtonNav onClick={this.updateChat} />
+        <SegmentedSlider onClick={this.updateChat} />
       </StyledInterations>
     </StyledWrapper>
     )
