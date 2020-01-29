@@ -10,7 +10,6 @@ import { SegmentedSlider } from './components/SegmentedSlider/SegmentedSlider';
 
 const StyledHeader = styled('header')`
   min-height: 20vh;
-  touch-action: manipulation;
 `;
 
 const StyledInterations = styled('div')`
