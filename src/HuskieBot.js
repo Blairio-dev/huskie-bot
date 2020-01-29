@@ -17,7 +17,8 @@ const StyledInterations = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 28vh;
+  margin-bottom: 8px;
+  min-height: ${props => props.hasInteractions ? '28vh' : '12vh'};
   padding: 16px;
 `;
 
@@ -47,6 +48,7 @@ class HuskieBot extends Component {
       adviceIsShown = false,
       boostsAreShown = false,
       chat = newChat('colloquialisms'),
+      hasInteractions = false,
       patterIsShown = false,
       previousQuestion = '',
     } = props;
@@ -58,19 +60,20 @@ class HuskieBot extends Component {
       adviceIsShown,
       boostsAreShown,
       chat,
+      hasInteractions,
       patterIsShown,
       previousQuestion,
 		};
   }
 
   updateQuestionChats() {
-    this.setState({ chat: newChat('answers'), previousQuestion: document.getElementById('questionInput').value });
+    this.setState({ chat: newChat('answers'), hasInteractions: true, previousQuestion: document.getElementById('questionInput').value });
   }
 
   updateChat = type => {
     let chat;
     chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
-    this.setState({ chat: chat });;
+    this.setState({ chat: chat, hasInteractions: true });;
 
     if(type === 'questions') {
       this.setState({ adviceIsShown: true, boostsAreShown: false, patterIsShown: false, chat: newChat('questions'), previousQuestion: ''})
@@ -82,7 +85,7 @@ class HuskieBot extends Component {
   };
     
   render() {
-    const { adviceIsShown, boostsAreShown, chat, patterIsShown, previousQuestion } = this.state;
+    const { adviceIsShown, boostsAreShown, chat, hasInteractions, patterIsShown, previousQuestion } = this.state;
 
     return (
       <StyledWrapper>
@@ -90,11 +93,11 @@ class HuskieBot extends Component {
           <h1>HuskieBot</h1>
         </StyledHeader>
         <HuskieIconTile adviceIsShown={adviceIsShown} chat={chat} previousQuestion={previousQuestion} />
-        <StyledInterations>
+        <StyledInterations hasInteractions={hasInteractions}>
         { adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} /> }
         { boostsAreShown && <BoostPanel onClick={this.updateChat}/> }
         { patterIsShown && <PatterPanel onClick={this.updateChat} /> }
-        <SegmentedSlider adviceIsShown={adviceIsShown} boostsAreShown={boostsAreShown} onClick={this.updateChat} patterIsShown={patterIsShown} />
+        <SegmentedSlider adviceIsShown={adviceIsShown} boostsAreShown={boostsAreShown} hasInteractions={hasInteractions} onClick={this.updateChat} patterIsShown={patterIsShown} />
       </StyledInterations>
     </StyledWrapper>
     )

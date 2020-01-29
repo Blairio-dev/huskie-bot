@@ -17,7 +17,7 @@ const getLeftPosition = (adviceIsShown, boostsAreShown, patterIsShown) => {
 };
 
 const StyledSelector = styled('div')`
-  background: hsla(0, 0%, 50%, 20%);
+  background: hsla(0, 0%, 70%, 15%);
   ${props => props.isShown && 'visibility: hidden;'}
   left: ${props => getLeftPosition(props.adviceIsShown, props.boostsAreShown, props.patterIsShown)};
   height: 40px;
@@ -35,7 +35,7 @@ const StyledWrapper = styled('div')`
   text-align: inherit;
 `;
 
-const SegmentedSlider = ({ adviceIsShown, boostsAreShown, onClick, patterIsShown }) => (
+const SegmentedSlider = ({ adviceIsShown, boostsAreShown, hasInteractions, onClick, patterIsShown }) => (
 <StyledWrapper>
     <SegmentedSliderButton
       isActive={adviceIsShown}
@@ -56,7 +56,7 @@ const SegmentedSlider = ({ adviceIsShown, boostsAreShown, onClick, patterIsShown
       adviceIsShown={adviceIsShown}
       boostsAreShown={boostsAreShown}
       patterIsShown={patterIsShown}
-      isShown={!adviceIsShown && !boostsAreShown && !patterIsShown}
+      isShown={!hasInteractions}
     />
 </StyledWrapper>
 );
