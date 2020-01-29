@@ -10,6 +10,7 @@ import { SegmentedSlider } from './components/SegmentedSlider/SegmentedSlider';
 
 const StyledHeader = styled('header')`
   min-height: 20vh;
+  touch-action: manipulation;
 `;
 
 const StyledInterations = styled('div')`
@@ -32,7 +33,6 @@ const StyledWrapper = styled('div')`
   justify-content: space-between;
   min-height: 100vh;
   text-align: center;
-  touch-action: manipulation;
 `;
 
 const newChat = type => {
