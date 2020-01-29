@@ -33,6 +33,7 @@ const StyledWrapper = styled('div')`
   display: flex;
   position: relative;
   text-align: inherit;
+  touch-action: none;
 `;
 
 const SegmentedSlider = ({ adviceIsShown, boostsAreShown, hasInteractions, onClick, patterIsShown }) => (
