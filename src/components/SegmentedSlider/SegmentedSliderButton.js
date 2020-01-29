@@ -14,7 +14,6 @@ const StyledButton = styled('button')`
     font-weight: bold;
     height: 56px;
     min-width: 80px;
-    touch-action: none;
     width: 108px;
 `;
 

@@ -13,7 +13,6 @@ const StyledChatWrapper = styled('p')`
 const StyledHuskie = styled('div')`
   min-height: 20vh;
   text-align: inherit;
-  touch-action: none;
 `;
 
 const StyledLogo = styled('img')`
