@@ -23,6 +23,7 @@ const StyledSelector = styled('div')`
   height: 40px;
   pointer-events: none;
   position: absolute;
+  touch-action: inherit;
   transition: left 0.2s ease-in-out;
   width: 92px
 `;
