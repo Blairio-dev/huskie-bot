@@ -7,14 +7,13 @@ const StyledButton = styled('button')`
     border: none;
     bottom: 0;
     height: 104px;
-    left: ${props => props.left}px;
     padding: 0;
-    position: absolute;
 `;
 
 const StyledLogo = styled('img')`
     height: 104px;
     pointer-events: none;
+    width: 102px;
 `;
 
 const BoostButton = ({ image, left, onClick }) => (

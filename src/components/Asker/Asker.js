@@ -5,7 +5,8 @@ import { SubmitButton } from '../SubmitButton/SubmitButton';
 
 const StyledAskerWrapper = styled('div')`
   display: inline-flex;
-  margin: 0 16px;
+  margin-bottom: 12px;
+  width: 100%;
 `;
 
 const StyledInput = styled('input')`

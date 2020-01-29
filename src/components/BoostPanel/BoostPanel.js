@@ -6,7 +6,10 @@ import { BoostButton } from '../BoostButton/BoostButton';
 import { BoostBowl, PepsiMax, Pretzels } from '../Icons/icons.js';
 
 const BoostWrapper = styled('div')`
-  position: relative;
+    display: inline-flex;
+    justify-content: space-around;
+    margin-bottom: 12px;
+    width: 100%;
 `;
 
 const BoostPanel = ({ onClick }) => (

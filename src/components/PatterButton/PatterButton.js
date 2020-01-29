@@ -10,8 +10,8 @@ const StyledButton = styled('button')`
   ${props => !props.disabled && 'cursor: pointer'};
   font-size: 14px;
   font-weight: bold;
-  margin: 16px 16px 0 16px;
-  min-width: 80px;
+  margin: 12px 7px;
+  min-width: 94px;
   padding: 11px 8px;
 `;
 

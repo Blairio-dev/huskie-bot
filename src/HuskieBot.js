@@ -13,6 +13,7 @@ const StyledHeader = styled('header')`
 `;
 
 const StyledInterations = styled('div')`
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -93,7 +94,7 @@ class HuskieBot extends Component {
         { adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} /> }
         { boostsAreShown && <BoostPanel onClick={this.updateChat}/> }
         { patterIsShown && <PatterPanel onClick={this.updateChat} /> }
-        <SegmentedSlider onClick={this.updateChat} />
+        <SegmentedSlider adviceIsShown={adviceIsShown} boostsAreShown={boostsAreShown} onClick={this.updateChat} patterIsShown={patterIsShown} />
       </StyledInterations>
     </StyledWrapper>
     )
