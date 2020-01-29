@@ -30,8 +30,9 @@ const StyledWrapper = styled('div')`
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   justify-content: space-between;
-  text-align: center;
   min-height: 100vh;
+  text-align: center;
+  touch-action: manipulation;
 `;
 
 const newChat = type => {
