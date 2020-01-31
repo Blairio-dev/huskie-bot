@@ -10,29 +10,24 @@ const StyledButtonGroup = styled('div')`
 `;
 
 const ButtonNav = ({ adviceIsShown, boostsAreShown, onClick, patterIsShown }) => (
-<StyledButtonGroup>
-    <Button
-      isActive={adviceIsShown}
-      onClick={() => onClick('questions')}
-      text="Advice"
-    />
-    <Button
-      isActive={boostsAreShown}
-      onClick={() => onClick('food')}
-      text="Feed"
-    />
-    <Button
-      isActive={patterIsShown}
-      onClick={() => onClick('coversational')}
-      text="Patter"
-    />
-</StyledButtonGroup>
+	<StyledButtonGroup>
+		<Button
+			isActive={adviceIsShown}
+			onClick={() => onClick('questions')}
+			text="Advice"
+		/>
+		<Button
+			isActive={boostsAreShown}
+			onClick={() => onClick('food')}
+			text="Feed"
+		/>
+		<Button
+			isActive={patterIsShown}
+			onClick={() => onClick('coversational')}
+			text="Patter"
+		/>
+	</StyledButtonGroup>
 );
-
-ButtonNav.propTypes = {
-    /** Handler invoked when the button is clicked. */
-    onClick: PropTypes.func,
-};
 
 ButtonNav.defaultProps = {};
 

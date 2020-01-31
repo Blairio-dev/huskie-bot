@@ -35,77 +35,77 @@ const StyledWrapper = styled('div')`
 `;
 
 const newChat = type => {
-  let chat;
-  chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
-  return chat;
+	let chat;
+	chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
+	return chat;
 };
 
 class HuskieBot extends Component {
-  constructor(props) {
+	constructor(props) {
 		super(props);
 
-		const { 
-      adviceIsShown = false,
-      boostsAreShown = false,
-      chat = newChat('colloquialisms'),
-      hasInteractions = false,
-      patterIsShown = false,
-      previousQuestion = '',
-    } = props;
+		const {
+			adviceIsShown = false,
+			boostsAreShown = false,
+			chat = newChat('colloquialisms'),
+			hasInteractions = false,
+			patterIsShown = false,
+			previousQuestion = '',
+		} = props;
 
-    this.updateChat = this.updateChat.bind(this);
-    this.updateQuestionChats = this.updateQuestionChats.bind(this);
+		this.updateChat = this.updateChat.bind(this);
+		this.updateQuestionChats = this.updateQuestionChats.bind(this);
 
 		this.state = {
-      adviceIsShown,
-      boostsAreShown,
-      chat,
-      hasInteractions,
-      patterIsShown,
-      previousQuestion,
+			adviceIsShown,
+			boostsAreShown,
+			chat,
+			hasInteractions,
+			patterIsShown,
+			previousQuestion,
 		};
-  }
+	}
 
-  updateQuestionChats() {
-    this.setState({ chat: newChat('answers'), hasInteractions: true, previousQuestion: document.getElementById('questionInput').value });
-  }
+	updateQuestionChats() {
+		this.setState({ chat: newChat('answers'), hasInteractions: true, previousQuestion: document.getElementById('questionInput').value });
+	}
 
-  updateChat = type => {
-    let chat;
-    chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
-    this.setState({ chat: chat, hasInteractions: true });;
+	updateChat = type => {
+		let chat;
+		chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
+		this.setState({ chat: chat, hasInteractions: true });;
 
-    if(type === 'questions') {
-      this.setState({ adviceIsShown: true, boostsAreShown: false, patterIsShown: false, chat: newChat('questions'), previousQuestion: ''})
-    } else if(type === 'food') {
-      this.setState({adviceIsShown: false, boostsAreShown: true, patterIsShown: false})
-    } else if(type === 'coversational') {
-      this.setState({ adviceIsShown: false, boostsAreShown: false, patterIsShown: true})
-    }
-  };
-    
-  render() {
-    const { adviceIsShown, boostsAreShown, chat, hasInteractions, patterIsShown, previousQuestion } = this.state;
+		if (type === 'questions') {
+			this.setState({ adviceIsShown: true, boostsAreShown: false, patterIsShown: false, chat: newChat('questions'), previousQuestion: '' })
+		} else if (type === 'food') {
+			this.setState({ adviceIsShown: false, boostsAreShown: true, patterIsShown: false })
+		} else if (type === 'coversational') {
+			this.setState({ adviceIsShown: false, boostsAreShown: false, patterIsShown: true })
+		}
+	};
 
-    return (
-      <StyledWrapper>
-        <StyledHeader>
-          <h1>HuskieBot</h1>
-        </StyledHeader>
-        <HuskieIconTile adviceIsShown={adviceIsShown} chat={chat} previousQuestion={previousQuestion} />
-        <StyledInterations hasInteractions={hasInteractions}>
-        { adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} /> }
-        { boostsAreShown && <BoostPanel onClick={this.updateChat}/> }
-        { patterIsShown && <PatterPanel onClick={this.updateChat} /> }
-        <SegmentedSlider adviceIsShown={adviceIsShown} boostsAreShown={boostsAreShown} hasInteractions={hasInteractions} onClick={this.updateChat} patterIsShown={patterIsShown} />
-      </StyledInterations>
-    </StyledWrapper>
-    )
-  }
+	render() {
+		const { adviceIsShown, boostsAreShown, chat, hasInteractions, patterIsShown, previousQuestion } = this.state;
+
+		return (
+			<StyledWrapper>
+				<StyledHeader>
+					<h1>HuskieBot</h1>
+				</StyledHeader>
+				<HuskieIconTile adviceIsShown={adviceIsShown} chat={chat} previousQuestion={previousQuestion} />
+				<StyledInterations hasInteractions={hasInteractions}>
+					{adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} />}
+					{boostsAreShown && <BoostPanel onClick={this.updateChat} />}
+					{patterIsShown && <PatterPanel onClick={this.updateChat} />}
+					<SegmentedSlider adviceIsShown={adviceIsShown} boostsAreShown={boostsAreShown} hasInteractions={hasInteractions} onClick={this.updateChat} patterIsShown={patterIsShown} />
+				</StyledInterations>
+			</StyledWrapper>
+		)
+	}
 }
 
 HuskieBot.defaultProps = {
-  chat: newChat('greetings'),
+	chat: newChat('greetings'),
 };
 
 export { HuskieBot };

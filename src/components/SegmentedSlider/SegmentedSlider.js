@@ -5,15 +5,15 @@ import styled from '@emotion/styled';
 import { SegmentedSliderButton } from './SegmentedSliderButton';
 
 const getLeftPosition = (adviceIsShown, boostsAreShown, patterIsShown) => {
-  let left;
-  if (adviceIsShown) {
-    left= '8px';
-  } else if (boostsAreShown) {
-    left= '116px';
-  } else if (patterIsShown) {
-    left= '224px';
-  }
-  return left;
+	let left;
+	if (adviceIsShown) {
+		left = '8px';
+	} else if (boostsAreShown) {
+		left = '116px';
+	} else if (patterIsShown) {
+		left = '224px';
+	}
+	return left;
 };
 
 const StyledSelector = styled('div')`
@@ -37,34 +37,34 @@ const StyledWrapper = styled('div')`
 `;
 
 const SegmentedSlider = ({ adviceIsShown, boostsAreShown, hasInteractions, onClick, patterIsShown }) => (
-<StyledWrapper>
-    <SegmentedSliderButton
-      isActive={adviceIsShown}
-      onClick={() => onClick('questions')}
-      text="Advice"
-    />
-    <SegmentedSliderButton
-      isActive={boostsAreShown}
-      onClick={() => onClick('food')}
-      text="Feed"
-    />
-    <SegmentedSliderButton
-      isActive={patterIsShown}
-      onClick={() => onClick('coversational')}
-      text="Patter"
-    />
-    <StyledSelector 
-      adviceIsShown={adviceIsShown}
-      boostsAreShown={boostsAreShown}
-      patterIsShown={patterIsShown}
-      isShown={!hasInteractions}
-    />
-</StyledWrapper>
+	<StyledWrapper>
+		<SegmentedSliderButton
+			isActive={adviceIsShown}
+			onClick={() => onClick('questions')}
+			text="Advice"
+		/>
+		<SegmentedSliderButton
+			isActive={boostsAreShown}
+			onClick={() => onClick('food')}
+			text="Feed"
+		/>
+		<SegmentedSliderButton
+			isActive={patterIsShown}
+			onClick={() => onClick('coversational')}
+			text="Patter"
+		/>
+		<StyledSelector
+			adviceIsShown={adviceIsShown}
+			boostsAreShown={boostsAreShown}
+			patterIsShown={patterIsShown}
+			isShown={!hasInteractions}
+		/>
+	</StyledWrapper>
 );
 
 SegmentedSlider.propTypes = {
-    /** Handler invoked when the button is clicked. */
-    onClick: PropTypes.func,
+	/** Handler invoked when the button is clicked. */
+	onClick: PropTypes.func,
 };
 
 SegmentedSlider.defaultProps = {};

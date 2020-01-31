@@ -8,27 +8,25 @@ const StyledButtonGroup = styled('div')`
   text-align: inherit;
 `;
 
-const PatterPanel = ( { onClick }) => (
-    <StyledButtonGroup>
-        <PatterButton
-            onClick={() => onClick('activities')}
-            text="Activites"
-        />
-        <PatterButton
-            onClick={() => onClick('wisdom')}
-            text="Wisdom"
-        />
-        <PatterButton
-            onClick={() => onClick('exclamations')}
-            text="Drivel"
-        />
-    </StyledButtonGroup>
+const PatterPanel = ({ onClick }) => (
+	<StyledButtonGroup>
+		<PatterButton
+			onClick={() => onClick('activities')}
+			text="Activites"
+		/>
+		<PatterButton
+			onClick={() => onClick('wisdom')}
+			text="Wisdom"
+		/>
+		<PatterButton
+			onClick={() => onClick('exclamations')}
+			text="Drivel"
+		/>
+	</StyledButtonGroup>
 );
 
-PatterPanel.propTypes = {};
-
 PatterPanel.defaultProps = {
-    isDisabled: false,
+	isDisabled: false,
 };
 
 export { PatterPanel };

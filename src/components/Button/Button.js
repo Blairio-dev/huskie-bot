@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 const StyledButton = styled('button')`
@@ -16,25 +15,16 @@ const StyledButton = styled('button')`
 `;
 
 const Button = ({ isActive, onClick, text }) => (
-    <StyledButton
-        disabled={isActive}
-        onClick={onClick}
-    >
-        {text}
-    </StyledButton>
+	<StyledButton
+		disabled={isActive}
+		onClick={onClick}
+	>
+		{text}
+	</StyledButton>
 );
 
-Button.propTypes = {
-	/** Sets active state. */
-    isActive: PropTypes.bool,
-    /** Handler invoked when the button is clicked. */
-    onClick: PropTypes.func,
-    /** Text disaplyed in the button. */
-	text: PropTypes.string.isRequired,
-};
-
 Button.defaultProps = {
-    isActive: false,
+	isActive: false,
 };
 
 export { Button };

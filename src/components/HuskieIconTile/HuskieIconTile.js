@@ -37,20 +37,20 @@ const StyledPreviousQuetion = styled('span')`
 `;
 
 const HuskieIconTile = ({ adviceIsShown, chat, previousQuestion }) => (
-<StyledHuskie>
-    <StyledLogo src={HuskieBot} alt="logo" />
-    <StyledChatWrapper>
-    {previousQuestion && adviceIsShown &&
-        <StyledPreviousQuetion>{previousQuestion}</StyledPreviousQuetion>
-    }
-    <span>{chat}</span>
-    </StyledChatWrapper>
-</StyledHuskie>
+	<StyledHuskie>
+		<StyledLogo src={HuskieBot} alt="logo" />
+		<StyledChatWrapper>
+			{previousQuestion && adviceIsShown &&
+				<StyledPreviousQuetion>{previousQuestion}</StyledPreviousQuetion>
+			}
+			<span>{chat}</span>
+		</StyledChatWrapper>
+	</StyledHuskie>
 );
 
 HuskieIconTile.propTypes = {
-    /** Handler invoked when the button is clicked. */
-    onClick: PropTypes.func,
+	/** Handler invoked when the button is clicked. */
+	onClick: PropTypes.func,
 };
 
 HuskieIconTile.defaultProps = {};

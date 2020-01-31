@@ -16,25 +16,16 @@ const StyledButton = styled('button')`
 `;
 
 const PatterButton = ({ isDisabled, onClick, text }) => (
-    <StyledButton
-        disabled={isDisabled}
-        onClick={onClick}
-    >
-        {text}
-    </StyledButton>
+	<StyledButton
+		disabled={isDisabled}
+		onClick={onClick}
+	>
+		{text}
+	</StyledButton>
 );
 
-PatterButton.propTypes = {
-	/** Sets disbled state. */
-    isDisabled: PropTypes.bool,
-    /** Handler invoked when the button is clicked. */
-    onClick: PropTypes.func,
-    /** Text disaplyed in the button. */
-	text: PropTypes.string.isRequired,
-};
-
 PatterButton.defaultProps = {
-    isDisabled: false,
+	isDisabled: false,
 };
 
 export { PatterButton };

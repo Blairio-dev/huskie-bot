@@ -16,25 +16,25 @@ const StyledButton = styled('button')`
 `;
 
 const SubmitButton = ({ isDisabled, onClick, text }) => (
-    <StyledButton
-        disabled={isDisabled}
-        onClick={onClick}
-    >
-        {text}
-    </StyledButton>
+	<StyledButton
+		disabled={isDisabled}
+		onClick={onClick}
+	>
+		{text}
+	</StyledButton>
 );
 
 SubmitButton.propTypes = {
 	/** Sets disbled state. */
-    isDisabled: PropTypes.bool,
-    /** Handler invoked when the button is clicked. */
-    onClick: PropTypes.func,
-    /** Text disaplyed in the button. */
+	isDisabled: PropTypes.bool,
+	/** Handler invoked when the button is clicked. */
+	onClick: PropTypes.func,
+	/** Text disaplyed in the button. */
 	text: PropTypes.string.isRequired,
 };
 
 SubmitButton.defaultProps = {
-    isDisabled: false,
+	isDisabled: false,
 };
 
 export { SubmitButton };

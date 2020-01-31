@@ -21,56 +21,56 @@ const StyledInput = styled('input')`
 `;
 
 class Asker extends Component {
-    constructor(props) {
-	    super(props);
+	constructor(props) {
+		super(props);
 
 		const { inputIsEmpty = true } = props;
 
 		this.state = { inputIsEmpty };
-    }
+	}
 
-    askQuestion() {
-        this.props.updateQuestionChat();
-        document.getElementById('questionInput').value = '';
-        this.setState({ inputIsEmpty: true });
-    }
+	askQuestion() {
+		this.props.updateQuestionChat();
+		document.getElementById('questionInput').value = '';
+		this.setState({ inputIsEmpty: true });
+	}
 
-    keyChecks(event) {
-        var code = event.keyCode || event.which;
+	keyChecks(event) {
+		var code = event.keyCode || event.which;
 
-        if(code === 13) {
-            this.askQuestion();
-        }
-    }
+		if (code === 13) {
+			this.askQuestion();
+		}
+	}
 
-    inputValueCheck() {
-        if(document.getElementById('questionInput').value === '') {
-          this.setState({ inputIsEmpty: true });
-        }
-    
-        if(document.getElementById('questionInput').value !== '') {
-          this.setState({ inputIsEmpty: false });
-        }
-    }
+	inputValueCheck() {
+		if (document.getElementById('questionInput').value === '') {
+			this.setState({ inputIsEmpty: true });
+		}
 
-    render() {
-        const { inputIsEmpty } = this.state;
-        return(
-            <StyledAskerWrapper>
-                <StyledInput
-                    id="questionInput"
-                    onChange={() => this.inputValueCheck()}
-                    onKeyPress={this.keyChecks.bind(this)}
-                    />
-                <SubmitButton
-                    isDisabled={inputIsEmpty}
-                    id="askButton"
-                    onClick={() => { this.askQuestion();}}
-                    text="Ask"
-                />
-            </StyledAskerWrapper>
-        )
-    }
+		if (document.getElementById('questionInput').value !== '') {
+			this.setState({ inputIsEmpty: false });
+		}
+	}
+
+	render() {
+		const { inputIsEmpty } = this.state;
+		return (
+			<StyledAskerWrapper>
+				<StyledInput
+					id="questionInput"
+					onChange={() => this.inputValueCheck()}
+					onKeyPress={this.keyChecks.bind(this)}
+				/>
+				<SubmitButton
+					isDisabled={inputIsEmpty}
+					id="askButton"
+					onClick={() => { this.askQuestion(); }}
+					text="Ask"
+				/>
+			</StyledAskerWrapper>
+		);
+	}
 }
 
 Asker.propTypes = {};

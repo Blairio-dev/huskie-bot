@@ -17,18 +17,18 @@ const StyledLogo = styled('img')`
 `;
 
 const BoostButton = ({ image, left, onClick }) => (
-    <StyledButton left={left} onClick={onClick}>
-        <StyledLogo
-            src={image}
-        />
-   </StyledButton>
+	<StyledButton left={left} onClick={onClick}>
+		<StyledLogo
+			src={image}
+		/>
+	</StyledButton>
 );
 
 BoostButton.propTypes = {
 	/** Svg. */
-    image: PropTypes.string,
-    /** Callback function called when button is clicked. */
-    onClick: PropTypes.func,
+	image: PropTypes.string,
+	/** Callback function called when button is clicked. */
+	onClick: PropTypes.func,
 };
 
 export { BoostButton };

@@ -18,25 +18,25 @@ const StyledButton = styled('button')`
 `;
 
 const SegmentedSliderButton = ({ isActive, onClick, text }) => (
-    <StyledButton
-        disabled={isActive}
-        onClick={onClick}
-    >
-        {text}
-    </StyledButton>
+	<StyledButton
+		disabled={isActive}
+		onClick={onClick}
+	>
+		{text}
+	</StyledButton>
 );
 
 SegmentedSliderButton.propTypes = {
 	/** Sets active state. */
-    isActive: PropTypes.bool,
-    /** Handler invoked when the button is clicked. */
-    onClick: PropTypes.func,
-    /** Text disaplyed in the button. */
+	isActive: PropTypes.bool,
+	/** Handler invoked when the button is clicked. */
+	onClick: PropTypes.func,
+	/** Text disaplyed in the button. */
 	text: PropTypes.string.isRequired,
 };
 
 SegmentedSliderButton.defaultProps = {
-    isActive: false,
+	isActive: false,
 };
 
 export { SegmentedSliderButton };
