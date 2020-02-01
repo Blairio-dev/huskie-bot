@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import HuskieBot from '../../assets/HuskieBot.svg';
+import Huh from '../../assets/sounds/Huh.mp3';
 
 const StyledChatWrapper = styled('p')`
   display: flex;
@@ -36,17 +37,36 @@ const StyledPreviousQuetion = styled('span')`
   margin-bottom: 4px;
 `;
 
-const HuskieIconTile = ({ adviceIsShown, chat, previousQuestion }) => (
-	<StyledHuskie>
-		<StyledLogo src={HuskieBot} alt="logo" />
-		<StyledChatWrapper>
-			{previousQuestion && adviceIsShown &&
-				<StyledPreviousQuetion>{previousQuestion}</StyledPreviousQuetion>
-			}
-			<span>{chat}</span>
-		</StyledChatWrapper>
-	</StyledHuskie>
-);
+const StyledSoundButton = styled('button')`
+	background: none;	
+	border: none;
+
+	:focus {
+		outline: 0;
+	}
+`;
+
+const HuskieIconTile = ({ adviceIsShown, chat, previousQuestion }) => {
+	let audio = new Audio(Huh);
+
+	const start = () => {
+		audio.play();
+	};
+
+	return (
+		<StyledHuskie>
+			<StyledSoundButton onClick={start} tabIndex="-1">
+				<StyledLogo src={HuskieBot} alt="logo" />
+			</StyledSoundButton>
+			<StyledChatWrapper>
+				{previousQuestion && adviceIsShown &&
+					<StyledPreviousQuetion>{previousQuestion}</StyledPreviousQuetion>
+				}
+				<span>{chat}</span>
+			</StyledChatWrapper>
+		</StyledHuskie>
+	);
+};
 
 HuskieIconTile.propTypes = {
 	/** Handler invoked when the button is clicked. */
