@@ -45,12 +45,12 @@ const StyledWrapper = styled('div')`
 		`button:first-of-type:after {
 		opacity: 0;
 		}
-		button:nth-child(2):after {
+		button:nth-of-type(2):after {
 			opacity: 0;
 		}`}
 
 	${props => props.patterIsShown &&
-		`button:nth-child(2):after {
+		`button:nth-of-type:after {
 			opacity: 0;
 		}`}
 
