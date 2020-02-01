@@ -12,9 +12,21 @@ const StyledButton = styled('button')`
     ${props => !props.disabled && 'cursor: pointer'};
     font-size: 14px;
     font-weight: bold;
-    height: 56px;
-    min-width: 80px;
-    width: 108px;
+    height: 48px;
+	position: relative;
+	width: 108px;
+	
+	:after {
+		display: inline-flex;
+		border-right: 1px solid hsla(0, 0%, 70%, 15%);
+		content: '';
+		height: 32px;
+		left: 107px;
+		padding: 0;
+		position: absolute;
+		top: 8px;
+		transition: opacity 0.3s ease-in-out;
+	}
 `;
 
 const SegmentedSliderButton = ({ isActive, onClick, text }) => (
