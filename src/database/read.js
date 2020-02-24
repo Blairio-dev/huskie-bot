@@ -1,10 +1,4 @@
 var AWS = require('aws-sdk');
-let awsConfig = {
-	'region': 'eu-west-2',
-	'endpoint': 'http://dynamodb.eu-west-2.amazonaws.com',
-	'accessKeyId': 'AKIAJIOSFPBDGDU7S5XA', 'secretAccessKey': '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'
-};
-AWS.config.update(awsConfig);
 
 let docClient = new AWS.DynamoDB.DocumentClient();
 let fetchOneByKey = function () {
