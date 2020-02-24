@@ -1,38 +1,38 @@
 {
-  "name": "huskie-bot",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@emotion/core": "^10.0.27",
-    "@emotion/styled": "^10.0.27",
-    "aws-sdk": "^2.625.0",
-    "react": "16.3",
-    "react-dom": "16.3",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0"
-  }
+	"name": "huskie-bot",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@emotion/core": "^10.0.27",
+		"@emotion/styled": "^10.0.27",
+		"aws-sdk": "^2.625.0",
+		"react": "16.3",
+		"react-dom": "16.3.3",
+		"react-router-dom": "^5.1.2",
+		"react-scripts": "3.1.1"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0"
+	}
 }
