@@ -20,11 +20,11 @@ function save(question, answer) {
 	};
 	docClient.put(params, function (err, data) {
 
-		if (err) {
-			console.log('users::save::error - ' + JSON.stringify(err, null, 2));
-		} else {
-			console.log('users::save::success');
-		}
+		// if (err) {
+		// 	console.log('users::save::error - ' + JSON.stringify(err, null, 2));
+		// } else {
+		// 	console.log('users::save::success');
+		// }
 	});
 }
 
