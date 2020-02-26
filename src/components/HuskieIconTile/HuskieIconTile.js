@@ -62,7 +62,7 @@ const HuskieIconTile = ({ adviceIsShown, chat, previousQuestion }) => {
 				{previousQuestion && adviceIsShown &&
 					<StyledPreviousQuetion>{previousQuestion}</StyledPreviousQuetion>
 				}
-				<span>{chat}</span>
+				<span id="chat">{chat}</span>
 			</StyledChatWrapper>
 		</StyledHuskie>
 	);

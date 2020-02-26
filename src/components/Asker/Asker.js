@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import styled from '@emotion/styled';
 import { SubmitButton } from '../SubmitButton/SubmitButton';
+import { save } from '../../database/write';
 
 const StyledAskerWrapper = styled('div')`
   display: inline-flex;
@@ -30,7 +31,11 @@ class Asker extends Component {
 	}
 
 	askQuestion() {
+		const question = document.getElementById('questionInput').value;
+		const answer = document.getElementById('chat').innerHTML;
+
 		this.props.updateQuestionChat();
+		save(question, answer);
 		document.getElementById('questionInput').value = '';
 		this.setState({ inputIsEmpty: true });
 	}

@@ -36,7 +36,7 @@ const StyledWrapper = styled('div')`
 
 const newChat = type => {
 	let chat;
-	chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
+	chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)];
 	return chat;
 };
 
@@ -70,19 +70,19 @@ class HuskieBot extends Component {
 		this.setState({ chat: newChat('answers'), hasInteractions: true, previousQuestion: document.getElementById('questionInput').value });
 	}
 
-	updateChat = type => {
+	updateChat(type) {
 		let chat;
-		chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)]
-		this.setState({ chat: chat, hasInteractions: true });;
+		chat = huskisms[type][Math.floor(Math.random() * huskisms[type].length)];
+		this.setState({ chat: chat, hasInteractions: true });
 
 		if (type === 'questions') {
-			this.setState({ adviceIsShown: true, boostsAreShown: false, patterIsShown: false, chat: newChat('questions'), previousQuestion: '' })
+			this.setState({ adviceIsShown: true, boostsAreShown: false, patterIsShown: false, chat: newChat('questions'), previousQuestion: '' });
 		} else if (type === 'food') {
-			this.setState({ adviceIsShown: false, boostsAreShown: true, patterIsShown: false })
+			this.setState({ adviceIsShown: false, boostsAreShown: true, patterIsShown: false });
 		} else if (type === 'coversational') {
-			this.setState({ adviceIsShown: false, boostsAreShown: false, patterIsShown: true })
+			this.setState({ adviceIsShown: false, boostsAreShown: false, patterIsShown: true });
 		}
-	};
+	}
 
 	render() {
 		const { adviceIsShown, boostsAreShown, chat, hasInteractions, patterIsShown, previousQuestion } = this.state;
@@ -100,7 +100,7 @@ class HuskieBot extends Component {
 					<SegmentedSlider adviceIsShown={adviceIsShown} boostsAreShown={boostsAreShown} hasInteractions={hasInteractions} onClick={this.updateChat} patterIsShown={patterIsShown} />
 				</StyledInterations>
 			</StyledWrapper>
-		)
+		);
 	}
 }
 

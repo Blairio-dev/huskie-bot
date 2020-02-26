@@ -1,15 +1,19 @@
 var AWS = require('aws-sdk');
 
-AWS.config.update({ region: 'eu-west-2' });
+AWS.config.region = 'eu-west-2';
+var creds = new AWS.CognitoIdentityCredentials({
+	IdentityPoolId: 'eu-west-2:19050a69-e92d-4b4f-8aee-6fe918b002b5'
+});
+AWS.config.credentials = creds;
 
 let docClient = new AWS.DynamoDB.DocumentClient();
 
-let remove = function () {
+function remove(question) {
 
 	var params = {
-		TableName: 'users',
+		TableName: 'HuskieBotQueries',
 		Key: {
-			'email_id': 'example@gmail.com'
+			'Question': question
 		}
 	};
 	docClient.delete(params, function (err, data) {

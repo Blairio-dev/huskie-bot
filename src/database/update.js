@@ -1,13 +1,17 @@
 var AWS = require('aws-sdk');
 
-AWS.config.update({ region: 'eu-west-2' });
+AWS.config.region = 'eu-west-2';
+var creds = new AWS.CognitoIdentityCredentials({
+	IdentityPoolId: 'eu-west-2:19050a69-e92d-4b4f-8aee-6fe918b002b5'
+});
+AWS.config.credentials = creds;
 
 let docClient = new AWS.DynamoDB.DocumentClient();
 
-let modify = function () {
+funxtion modify(question) {
 	var params = {
-		TableName: 'users',
-		Key: { 'email_id': 'example-1@gmail.com' },
+		TableName: 'HuskieBotQueries',
+		Key: { 'Question': 'question' },
 		UpdateExpression: 'set updated_by = :byUser, is_deleted = :boolValue',
 		ExpressionAttributeValues: {
 			':byUser': 'updateUser',

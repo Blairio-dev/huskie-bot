@@ -1,17 +1,21 @@
 var AWS = require('aws-sdk');
 
-AWS.config.update({ region: 'eu-west-2' });
+AWS.config.region = 'eu-west-2';
+var creds = new AWS.CognitoIdentityCredentials({
+	IdentityPoolId: 'eu-west-2:19050a69-e92d-4b4f-8aee-6fe918b002b5'
+});
+AWS.config.credentials = creds;
 
 let docClient = new AWS.DynamoDB.DocumentClient();
 
-let save = function () {
+function save(question, answer) {
 
 	var input = {
-		'email_id': 'example-1@gmail.com', 'created_by': 'clientUser', 'created_on': new Date().toString(),
+		'Question': question, 'Answer': answer, 'created_on': new Date().toString(),
 		'updated_by': 'clientUser', 'updated_on': new Date().toString(), 'is_deleted': false
 	};
 	var params = {
-		TableName: 'users',
+		TableName: 'HuskieBotQueries',
 		Item: input
 	};
 	docClient.put(params, function (err, data) {
@@ -24,4 +28,4 @@ let save = function () {
 	});
 }
 
-save();
+export { save };
