@@ -94,7 +94,7 @@ class HuskieBot extends Component {
 				</StyledHeader>
 				<HuskieIconTile adviceIsShown={adviceIsShown} chat={chat} previousQuestion={previousQuestion} />
 				<StyledInterations hasInteractions={hasInteractions}>
-					{adviceIsShown && <Asker updateQuestionChat={this.updateQuestionChats} />}
+					{adviceIsShown && <Asker chat={chat} updateQuestionChat={this.updateQuestionChats} />}
 					{boostsAreShown && <BoostPanel onClick={this.updateChat} />}
 					{patterIsShown && <PatterPanel onClick={this.updateChat} />}
 					<SegmentedSlider adviceIsShown={adviceIsShown} boostsAreShown={boostsAreShown} hasInteractions={hasInteractions} onClick={this.updateChat} patterIsShown={patterIsShown} />

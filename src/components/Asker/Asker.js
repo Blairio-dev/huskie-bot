@@ -31,11 +31,10 @@ class Asker extends Component {
 	}
 
 	askQuestion() {
-		const question = document.getElementById('questionInput').value;
-		const answer = document.getElementById('chat').innerHTML;
-
 		this.props.updateQuestionChat();
-		save(question, answer);
+		const question = document.getElementById('questionInput').value;
+
+		setTimeout(() => { save(question, this.props.chat); }, 100);
 		document.getElementById('questionInput').value = '';
 		this.setState({ inputIsEmpty: true });
 	}
