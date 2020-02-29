@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 
+import { colours, palette } from '../../tokens/colours';
 import { SegmentedSliderButton } from './SegmentedSliderButton';
+import styled from '@emotion/styled';
 
 const getLeftPosition = (adviceIsShown, boostsAreShown, patterIsShown) => {
 	let left;
@@ -17,7 +18,7 @@ const getLeftPosition = (adviceIsShown, boostsAreShown, patterIsShown) => {
 };
 
 const StyledSelector = styled('div')`
-	background: hsla(0, 0%, 70%, 15%);
+	background: ${palette.transparent};
 	${props => props.isShown && 'visibility: hidden;'}
 	left: ${props => getLeftPosition(props.adviceIsShown, props.boostsAreShown, props.patterIsShown)};
 	height: 40px;
@@ -30,7 +31,7 @@ const StyledSelector = styled('div')`
 
 const StyledWrapper = styled('div')`
   	align-items: center;
-	background: hsl(237, 23%, 18%);
+	background: ${colours.componentBackground};
 	display: flex;
 	padding: 0 4px;
 	position: relative;

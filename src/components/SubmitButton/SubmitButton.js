@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { colours } from '../../tokens/colours';
 import styled from '@emotion/styled';
 
 const StyledButton = styled('button')`
     align-items: center;
     appearance: none;
-    background: ${props => props.disabled ? 'hsl(240, 22%, 28%)' : 'hsl(240, 22%, 18%)'};
-    border: 1px solid ${props => props.disabled ? 'hsl(240, 22%, 38%)' : 'hsl(240, 22%, 48%)'};
-    color: hsl(0, 0%, 100%);
+    background: ${props => props.disabled ? colours.buttonBackgroundDisabled : colours.buttonBackground};
+	border: 1px solid ${props => props.disabled ? colours.buttonBorderDisabled : colours.buttonBorder};
+	color: ${colours.body};
     ${props => !props.disabled && 'cursor: pointer'};
     display: flex;
     font-size: 14px;

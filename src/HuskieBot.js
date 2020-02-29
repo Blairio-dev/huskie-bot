@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 import { Asker } from './components/Asker/Asker';
 import { BoostPanel } from './components/BoostPanel/BoostPanel';
+import { colours } from './tokens/colours';
 import { HuskieIconTile } from './components/HuskieIconTile/HuskieIconTile';
 import { huskisms } from '../src/assets/huskisms';
 import { PatterPanel } from './components/PatterPanel/PatterPanel';
@@ -24,7 +25,7 @@ const StyledInterations = styled('div')`
 
 const StyledWrapper = styled('div')`
   align-items: center;
-  background-color: hsl(335, 23%, 18%);
+  background-color: ${colours.pageBackground};
   color: white;
   display: flex;
   flex-direction: column;

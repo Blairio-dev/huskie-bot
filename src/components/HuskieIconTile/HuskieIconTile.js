@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+
+import { colours } from '../../tokens/colours';
 import HuskieBot from '../../assets/HuskieBot.svg';
 import Huh from '../../assets/sounds/Huh.mp3';
+import styled from '@emotion/styled';
 
 const StyledChatWrapper = styled('p')`
   display: flex;
@@ -32,7 +34,7 @@ const StyledLogo = styled('img')`
 `;
 
 const StyledPreviousQuetion = styled('span')`
-  color: hsl(48, 88%, 67%);
+  color: ${colours.buttonBorderActive};
   font-size: calc(12px + 2vmin);
   margin-bottom: 4px;
 `;

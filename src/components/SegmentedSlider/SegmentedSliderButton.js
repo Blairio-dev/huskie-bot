@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-import { colours } from '../../tokens/colours';
+import { colours, palette } from '../../tokens/colours';
 
 const StyledButton = styled('button')`
     appearance: none;
@@ -18,7 +18,7 @@ const StyledButton = styled('button')`
 	
 	:after {
 		display: inline-flex;
-		border-right: 1px solid hsla(0, 0%, 70%, 15%);
+		border-right: 1px solid ${palette.transparent};
 		content: '';
 		height: 32px;
 		left: 107px;
