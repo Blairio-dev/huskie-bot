@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 import { PatterButton } from '../PatterButton/PatterButton';
 
 const StyledButtonGroup = styled('div')`
-  align-items: center;
-  display: flex;
-  text-align: inherit;
+	align-items: center;
+	display: flex;
+	text-align: inherit;
 `;
 
 const PatterPanel = ({ onClick }) => (

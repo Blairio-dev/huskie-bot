@@ -10,29 +10,29 @@ import { PatterPanel } from './components/PatterPanel/PatterPanel';
 import { SegmentedSlider } from './components/SegmentedSlider/SegmentedSlider';
 
 const StyledHeader = styled('header')`
-  min-height: 20vh;
+	min-height: 20vh;
 `;
 
 const StyledInterations = styled('div')`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin-bottom: 8px;
-  min-height: ${props => props.hasInteractions ? '28vh' : '12vh'};
-  padding: 16px;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin-bottom: 8px;
+	min-height: ${props => props.hasInteractions ? '28vh' : '12vh'};
+	padding: 16px;
 `;
 
 const StyledWrapper = styled('div')`
-  align-items: center;
-  background-color: ${colours.pageBackground};
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: space-between;
-  min-height: 100vh;
-  text-align: center;
+	align-items: center;
+	background-color: ${colours.pageBackground};
+	color: white;
+	display: flex;
+	flex-direction: column;
+	font-size: calc(10px + 2vmin);
+	justify-content: space-between;
+	min-height: 100vh;
+	text-align: center;
 `;
 
 const newChat = type => {

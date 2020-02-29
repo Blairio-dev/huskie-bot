@@ -5,20 +5,20 @@ import { SubmitButton } from '../SubmitButton/SubmitButton';
 import { save } from '../../database/write';
 
 const StyledAskerWrapper = styled('div')`
-  display: inline-flex;
-  margin-bottom: 12px;
-  width: 100%;
+	display: inline-flex;
+	margin-bottom: 12px;
+	width: 100%;
 `;
 
 const StyledInput = styled('input')`
-  border: none;
-  border-radius: 0;
-  font-size: 16px;
-  height: 24px;
-  margin-right: 8px;
-  padding: 8px;
-  text-align: inherit;
-  width: -webkit-fill-available;
+	border: none;
+	border-radius: 0;
+	font-size: 16px;
+	height: 24px;
+	margin-right: 8px;
+	padding: 8px;
+	text-align: inherit;
+	width: -webkit-fill-available;
 `;
 
 class Asker extends Component {
