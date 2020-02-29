@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from '@emotion/styled';
 
 import { Asker } from './components/Asker/Asker';
 import { BoostPanel } from './components/BoostPanel/BoostPanel';
@@ -8,6 +7,7 @@ import { HuskieIconTile } from './components/HuskieIconTile/HuskieIconTile';
 import { huskisms } from '../src/assets/huskisms';
 import { PatterPanel } from './components/PatterPanel/PatterPanel';
 import { SegmentedSlider } from './components/SegmentedSlider/SegmentedSlider';
+import styled from '@emotion/styled';
 
 const StyledHeader = styled('header')`
 	min-height: 20vh;

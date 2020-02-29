@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 
 import { colours, palette } from '../../tokens/colours';
+import styled from '@emotion/styled';
 
 const StyledButton = styled('button')`
     appearance: none;

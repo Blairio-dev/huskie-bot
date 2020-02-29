@@ -1,4 +1,3 @@
-
 const palette = {
 	pinkDark: 'hsl(335, 23%, 18%)',
 	purple: 'hsl(240, 22%, 18%)',

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { colours } from '../../tokens/colours';
-import HuskieBot from '../../assets/HuskieBot.svg';
 import Huh from '../../assets/sounds/Huh.mp3';
+import HuskieBot from '../../assets/HuskieBot.svg';
 import styled from '@emotion/styled';
 
 const StyledChatWrapper = styled('p')`

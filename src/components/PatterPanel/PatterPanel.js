@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from '@emotion/styled';
+
 import { PatterButton } from '../PatterButton/PatterButton';
+import styled from '@emotion/styled';
 
 const StyledButtonGroup = styled('div')`
 	align-items: center;
