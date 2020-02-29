@@ -7,6 +7,7 @@ import styled from '@emotion/styled';
 
 const getLeftPosition = (adviceIsShown, boostsAreShown, patterIsShown) => {
 	let left;
+
 	if (adviceIsShown) {
 		left = '4px';
 	} else if (boostsAreShown) {
@@ -14,6 +15,7 @@ const getLeftPosition = (adviceIsShown, boostsAreShown, patterIsShown) => {
 	} else if (patterIsShown) {
 		left = '220px';
 	}
+
 	return left;
 };
 
@@ -37,27 +39,27 @@ const StyledWrapper = styled('div')`
 	position: relative;
 	text-align: inherit;
 
+	button:last-of-type:after {
+		content: unset;
+	}
+
 	${props => props.adviceIsShown &&
 		`button:first-of-type:after {
 			opacity: 0;
-	}`}
+		}`}
 
 	${props => props.boostsAreShown &&
 		`button:first-of-type:after {
-		opacity: 0;
+			opacity: 0;
 		}
 		button:nth-of-type(2):after {
 			opacity: 0;
 		}`}
 
 	${props => props.patterIsShown &&
-		`button:nth-of-type:after {
+		`button:nth-of-type(2):after {
 			opacity: 0;
 		}`}
-
-	button:last-of-type:after {
-		content: unset;
-	}
 `;
 
 const SegmentedSlider = ({ adviceIsShown, boostsAreShown, hasInteractions, onClick, patterIsShown }) => (
