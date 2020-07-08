@@ -8,6 +8,7 @@ import { huskisms } from '../src/assets/huskisms';
 import { PatterPanel } from './components/PatterPanel/PatterPanel';
 import { SegmentedSlider } from './components/SegmentedSlider/SegmentedSlider';
 import styled from '@emotion/styled';
+import { ExtrasMenuButton } from './components/ExtrasMenuButton/ExtrasMenuButton';
 
 const StyledHeader = styled('header')`
 	min-height: 20vh;
@@ -93,6 +94,7 @@ class HuskieBot extends Component {
 				<StyledHeader>
 					<h1>HuskieBot</h1>
 				</StyledHeader>
+				<ExtrasMenuButton />
 				<HuskieIconTile adviceIsShown={adviceIsShown} chat={chat} previousQuestion={previousQuestion} />
 				<StyledInterations hasInteractions={hasInteractions}>
 					{adviceIsShown && <Asker chat={chat} updateQuestionChat={this.updateQuestionChats} />}
