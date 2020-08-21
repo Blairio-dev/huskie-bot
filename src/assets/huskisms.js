@@ -29,8 +29,7 @@ const huskisms = {
 		'Naw!',
 		'No way, man!',
 		'That’s pure conjecture.',
-		'The games a bogey',
-		'You shouldn’t be standing there casting aspersions!',
+		'The game\'s a bogey.',
 
 		// Other
 		'I\'m ambivalent.',
@@ -46,6 +45,7 @@ const huskisms = {
 		'You’ve got to see this!',
 		'You’re good stock.',
 		'We’re not playing for points, here.',
+		'You shouldn’t be standing there casting aspersions!',
 	],
 	exclamations: [
 		'Are you sure about that?',
