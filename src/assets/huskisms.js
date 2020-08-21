@@ -12,7 +12,6 @@ const huskisms = {
 	answers: [
 		//Yes
 		'Absolutely not!',
-		'Boffinry!',
 		'Does a bear shit in the woods?',
 		'Good shout.',
 		'Let’s go for the jugular.',
@@ -26,7 +25,7 @@ const huskisms = {
 		'Deary me.',
 		'Easy now!',
 		'It\'s borked!',
-		'Looks like a dead loss',
+		'Looks like a dead loss.',
 		'Naw!',
 		'No way, man!',
 		'That’s pure conjecture.',
