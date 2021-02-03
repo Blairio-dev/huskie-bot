@@ -1,8 +1,8 @@
 # HuskieBot
 
-https://www.huskiebot.com
+Huskie in your pocket!
 
-Huskie in your pocket.
+https://www.huskiebot.com
 
 ## Features
 
