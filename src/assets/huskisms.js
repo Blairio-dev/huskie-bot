@@ -30,6 +30,7 @@ const huskisms = {
 		'No way, man!',
 		'That’s pure conjecture.',
 		'The game\'s a bogey.',
+		'Wind your neck in!',
 
 		// Other
 		'I\'m ambivalent.',
@@ -95,6 +96,7 @@ const huskisms = {
 	],
 	goodbyes: [
 		'Get yoursel’ up the road.',
+		'I’ll see you tomorrow bright as a button',
 		'Let’s louse.',
 	],
 	greetings: [
@@ -102,6 +104,7 @@ const huskisms = {
 		'Am ready.',
 		'I\'m on tenterhooks here.',
 		'I’ve been waiting hours for you to turn up!',
+		'I mean business',
 		'Nice of you to join us!',
 		'Listen...',
 		'Picture the scene...',
