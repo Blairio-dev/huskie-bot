@@ -104,7 +104,7 @@ const huskisms = {
 		'Am ready.',
 		'I\'m on tenterhooks here.',
 		'I’ve been waiting hours for you to turn up!',
-		'I mean business',
+		'I mean business.',
 		'Nice of you to join us!',
 		'Listen...',
 		'Picture the scene...',
